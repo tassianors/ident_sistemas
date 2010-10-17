@@ -1,0 +1,67 @@
+
+\documentclass{ppgeesa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{listings}
+
+\lstset{stepnumber=2, frame=single,tabsize=2, breaklines=true, basicstyle=\footnotesize}
+
+\hypersetup{
+	colorlinks,
+	debug=true,
+	linkcolor=black,  %%% cor do tableofcontents, \ref, \footnote, etc
+	citecolor=red,  %%% cor do \cite
+	urlcolor=blue,   %%% cor do \url e \href
+	bookmarksopen=true,
+	pdftitle={Controle Robusto},
+	pdfauthor={Tassiano Neuhaus},
+	pdfsubject={Sistemas de controle multivariáveis},
+	pdfkeywords={Controle Robusto}
+	%pdfpagemode=FullScreen
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\title{Controle Robusto e Caracterização de incertezas}
+
+\author{Tassiano Neuhaus\\
+{\small Universidade Federal do Rio Grande do Sul - Departamento de Engenharia Elétrica\\Av. Osvaldo Aranha, 103 - Bairro Bom Fim CEP: 90035-190 - Porto Alegre - RS - Brasil}\\
+}%\thanks{Tassiano Neuhaus, tassianors@gmail.com, tel +55-51-91760154}}
+
+\maketitle
+\thispagestyle{empty}\pagestyle{empty}
+
+\begin{abstract}
+Neste trabalho será apresentado a caracterização de um sistema sujeito a incertezas. A caracterização
+será baseada nos seguintes tipos: Politópicas, limitadas em norma, diagonal e elemento por elemento.
+
+Para cada uma das incertezas caracterizadas será projetada uma realimentação de estados para minimizar
+a norma {\it{$H_2$}} em malha fechada. O mesmo será feito para minimizar a norma {\it{$H_{\infty}$}}
+
+Ao fim será feita uma breve comparação entre os resultados obtidos no trabalho.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Controle Robusto, Incertezas politópicas, limitadas em norma e diagonais.
+\end{IEEEkeywords}
+
+\input{input/intro.tex}
+\input{input/caracterization.tex}
+\input{input/controle_robust.tex}
+\input{input/normH2.tex}
+\input{input/normHinf.tex}
+\input{input/concl.tex}
+
+\bibliographystyle{IEEEtran}
+\bibliography{biblio}
+
+\end{document}

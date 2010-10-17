@@ -1,0 +1,49 @@
+%===============================================================================
+\section{Introdução}
+
+Neste trabalho será apresentado o projeto de controladores denominados Robustos. Para 
+tanto será apresentado o conceito de um controlador Robusto. A fim de modelar um
+sistema sujeito a incertezas será apresentado alguns métodos para que sua modelagem
+matemática seja possível. 
+
+Para tornar o estudo mais claro será utilizado um sistema físico onde estará sujeito a
+perturbações e/ou incertezas. Sobre este sistema será feito a modelagem seguindo cada um
+dos processos e com estes modelos será efetuado uma simulação. 
+
+Esta simulação será baseada no projeto de uma realimentação de estados com o intuito de
+satisfazer a minimização da norma $H2$ e $H_{\infty}$.
+
+O sistema utilizado é apresentado no sistema de equações de estado descrito em (\ref{eq:intro_sis}).
+
+\begin{equation}
+\begin{matrix}
+A=\begin{bmatrix}
+0 & 1\\ 
+-ba &a+b 
+\end{bmatrix} &
+B=\begin{bmatrix}
+0\\ 
+k
+\end{bmatrix} 
+\end{matrix}
+\label{eq:intro_sis}
+\end{equation}
+
+Este sistema possui a função de transferência apresentado em (\ref{eq:intro_transf}).
+
+\begin{equation}
+G(s)=\frac{k}{(s-a)(s-b)}
+\label{eq:intro_transf}
+\end{equation}
+
+Os parâmetros $a, b, k$ estão sujeitos as variações apresentadas em (\ref{eq:intro_limit}).
+
+\begin{equation}
+\begin{matrix}
+b= & -0.012725 & \\ 
+k= & [k_1 \; k_2] =& [-0.4649.10^{-4} \; -0.7449.10^{-4}]\\ 
+a= & [a_1 \; a_2] =& [-0.25 \; -2]
+\end{matrix}
+\label{eq:intro_limit}
+\end{equation}
+

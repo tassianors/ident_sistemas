@@ -1,0 +1,245 @@
+\section{Controle Robusto}
+\label{sec:robust}
+%===============================================================================
+
+Nas seções seguintes será apresentado a modelagem para os tipos de incertezas.
+Utilizando o sistema descrito em (\ref{eq:intro_sis}) e os limites das incertezas
+descritos em (\ref{eq:intro_limit}), será apresentada a modelagem baseado em cada
+um dos tipos apresentados a seguir.\cite{lmi_sys_control}
+
+%===============================================================================
+\subsubsection{Estabilidade quadrática}
+\label{sec:robust_quadratic}
+
+A ideia fundamental da estabilização quadrática de um sistema incerto autónomo 
+por realimentação linear estática de estados é encontrar uma lei de controle tal
+que a função quadrática definida positiva:
+
+\begin{equation}
+V(x)=x'Px; \; com P>0
+\nonumber
+\end{equation}
+
+Possua sua derivada definida negativa ao longo da trajetória do sistema em malha fechada:
+
+\begin{equation}
+\begin{matrix}
+\dot{V}(x)=x'\{(A-BK)'P+P(A-BK)\}x < 0\\ 
+\forall A \in \mathbf{A}, \forall B \in \mathbf{B}
+\end{matrix}
+\nonumber
+\end{equation}
+
+Desta forma o que busca-se é uma matriz $P$ que satisfaça não apenas uma equação mas
+um grupo de equações para estabilizar o sistema de forma Robusta.
+
+Para um sistema sem incertezas tem-se que a solução do problema é como abaixo:
+
+\begin{equation}
+P=W^{-1}; K=RW^{-1}
+\nonumber
+\end{equation}
+
+Para o sistema abaixo com $R\equiv KP^{-1}$.
+
+\begin{equation}
+WA_0'+A_0W -B_0R-R'B_0 < 0
+\nonumber
+\end{equation}
+
+%===============================================================================
+\subsection{Politópica}
+\label{sec:robust_politopica}
+
+Para o caso de incertezas do tipo politópico uma condição necessária e suficiente para a
+estabilidade quadrática do sistema incerto autónomo em malha fechada é que todos os vértices
+do poliedro que constituem o conjunto de modelos possuam a mesma matriz $P$ simétrica
+definida positiva como matriz de Lyapunov.
+
+\begin{equation}
+WA_i'+A_iW-B_jR-R'B_j'< 0
+\label{eq:robust_politopico}
+\end{equation}
+
+Para $\forall i=1,...,na, \forall j=1,...,nb$.
+
+O sistema utilizado neste trabalho (\ref{eq:intro_sis}) é caracterizado utilizando a
+forma politópica como em (\ref{eq:carac_sis_politopico}).
+
+\begin{equation}
+\begin{matrix}
+A_1=\begin{bmatrix}
+0 & 1\\ 
+-ba_1 &a_1+b 
+\end{bmatrix} \; A_2=\begin{bmatrix}
+0 & 1 \\ 
+-ba_2 & a_2+b 
+\end{bmatrix}
+\\ \; & \; \\
+B_1=\begin{bmatrix}
+0\\ 
+k_1
+\end{bmatrix}B_2=\begin{bmatrix}
+0\\ 
+k_2
+\end{bmatrix}
+\end{matrix}
+\label{eq:carac_sis_politopico}
+\end{equation}
+
+A partir de (\ref{eq:robust_politopico}) tem-se o conjunto de inequações lineares apresentado
+em (\ref{eq:robust_politopico_equations}).
+
+\begin{equation}
+\begin{matrix}
+WA_1'+A_1W-B_1R-R'B_1'<0\\ 
+WA_1'+A_1W-B_2R-R'B_2'<0\\ 
+WA_2'+A_2W-B_1R-R'B_1'<0\\ 
+WA_2'+A_2W-B_2R-R'B_2'<0
+\end{matrix}
+\label{eq:robust_politopico_equations}
+\end{equation}
+
+%===============================================================================
+\subsection{Limitada em norma}
+\label{sec:carac_limit_norma}
+
+Considerando o sistema apresentado em (\ref{eq:robust_sis_incert}) com $\omega(t) \equiv 0$.
+
+\begin{equation}
+\begin{cases}
+\dot{x}(t)=A_0x(t)+B_0u(t)B_{\omega}\omega(t)+Dp(t)
+\\ 
+q(t)=E_Ax(t)+E_Bu(t)+Fp(t)
+\\ 
+z(t)=Gx(t)+Hu(t)
+\\
+p(t)=\Delta(t)q(t); \; \left \| \Delta(t) \right \| \leq 1
+\end{cases}
+\label{eq:robust_sis_incert}
+\end{equation}
+
+Para este sistema temos que a derivada da função $V(x)=x'Px$ seja definida positiva:
+
+\begin{equation}
+x'-(A_0-B_0 K)'P-P(A_0-B_0 K)x-x'PDp-p'D'Px < 0
+\nonumber
+\end{equation}
+
+Para todo $x \neq 0$ tal que $p'p \leq q'q$ implica de maneira equivalente:
+
+\begin{equation}
+p'p \leq ((E_A-E_B K)x)'(E_A-E_B K)x
+\nonumber
+\end{equation}
+
+Tem-se então que o sistema apresentado em (\ref{eq:robust_limit_norma}) é uma condição
+necessária e suficiente para a estabilidade quadrática do sistema com incertezas limitadas
+em norma e também é convexa, portanto pode ser resolvida com algoritmos de resolução de LMI.
+
+\begin{equation}
+\begin{bmatrix}
+-A_0+B_0R-WA_0'+R'B_0'-DD' & -(WE_A+RE_B')\\ 
+-(WE_A'+R'E_B')' & I
+\end{bmatrix}>0
+\label{eq:robust_limit_norma}
+\end{equation}
+
+Desta forma para o sistema (\ref{eq:intro_sis}) temos que a modelagem para incertezas limitadas
+em norma é a apresentada em (\ref{eq:robust_sis_limit}).
+
+\begin{equation}
+\begin{matrix}
+A_0=\begin{bmatrix}
+0 & 1\\ 
+-b(a_1+a_2)/2 & b+(a_1+a_2)/2
+\end{bmatrix} 
+\\
+\;
+\\
+B_0=\begin{bmatrix}
+0\\ 
+(k_1+k_2)/2
+\end{bmatrix}
+\\
+\; 
+\\
+E_A=\begin{bmatrix}
+(a_1-a_2)/2 & 0\\ 
+0 & (a_1-a_2)/2
+\end{bmatrix} 
+\\
+\;
+\\
+D=\begin{bmatrix}
+0 & 0\\ 
+1 & 1
+\end{bmatrix}
+\\
+\;
+\\
+E_B=\begin{bmatrix}
+0\\ 
+(k_1-k_2)/2
+\end{bmatrix}
+\end{matrix}
+\label{eq:robust_sis_limit}
+\end{equation}
+
+
+%===============================================================================
+\subsection{Diagonais}
+\label{sec:carac_diagonais}
+
+Para incertezas diagonais o sistema fica como em (\ref{eq:robust_sis_limit}).
+
+%===============================================================================
+\subsection{Elemento a elemento}
+\label{sec:carac_elemento}
+
+Para as incertezas do tipo elemento a elemento temos as seguintes definições:
+
+\begin{equation}
+\begin{matrix}
+D_A=\begin{bmatrix}
+0\\ 
+1
+\end{bmatrix}
+\\ 
+E_A=\begin{bmatrix}
+(a_1-a_2)/2 & (a_1-a_2)/2
+\end{bmatrix}
+\\ \\
+D_B=\begin{bmatrix}
+0\\ 
+1
+\end{bmatrix}\\
+E_B=[(k_1-k_2)/2]
+\end{matrix}
+\nonumber
+\end{equation}
+
+Desta forma chega-se:
+
+\begin{equation}
+\begin{matrix}
+\hat{D} = \begin{bmatrix}
+0 & 0\\ 
+1 & 1
+\end{bmatrix}\\ \\
+\hat{E}_A = \begin{bmatrix}
+(a_1-a_2)/2 & (a_1-a_2)/2\\ 
+0 & 0
+\end{bmatrix}\\ \\
+\hat{E}_B =\begin{bmatrix}
+0\\ 
+(k_1-K2)/2
+\end{bmatrix}\\ \\
+\Delta(t)=\begin{bmatrix}
+\delta_A(t) &0 \\ 
+0 & \delta_B(t)
+\end{bmatrix}
+\end{matrix}
+\nonumber
+\end{equation}
+

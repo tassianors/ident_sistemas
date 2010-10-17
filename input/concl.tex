@@ -1,0 +1,48 @@
+\section{Conclusões}
+\label{sec:concl}
+
+O projeto de controladores denominados Robustos é uma área bem abrangente e com
+inúmeras aplicações na engenharia de controle. Sistemas sujeitos a incertezas são
+praticamente todos os sistemas físicos, alguns com mais e outros com menos intensidade
+e representatividade da incerteza apresentada. Estas incertezas como vimos pode ser
+de várias origens (Seção \ref{sec:caracterization}) e são classificadas em tipos. Neste
+trabalho apresentamos a modelagem matemática de 4 tipos, considerados principais e
+que cobrem boa parte das incertezas mais encontradas.
+
+Incertezas do tipo politípicas (Seção \ref{sec:carac_politopica}) formam uma região em forma de 
+um politopo, e para se encontrar uma realimentação de estados para este sistema é 
+necessário que o sistema seja estável em todos os vértices deste politopo. Nas seções 
+\ref{sec:normh2_politopico} e \ref{sec:hinf_sis_politopico} foi apresentado uma
+realimentação de estados para incertezas deste tipo tendo como requisitos as normas 
+$H_2$ e $H_{\infty}$ respectivamente. Foi observado pelas Figuras (\ref{fig:h2_polytopic})
+e (\ref{fig:hinf_polytopic}) que o sistema que é submetido a norma $H_2$ possui um
+sobrepasso maior para uma entrada do tipo degrau, e um tempo de acomodação maior
+se comparado com o sistema sujeito a norma $H_{\infty}$.
+
+Incertezas do tipo limitadas em norma (Seção \ref{sec:carac_limit_norma}) onde não se tem 
+informações detalhadas sobre os componentes do sistema. Para este tipo de incerteza se 
+encontrou uma realimentação de estados sujeito as normas $H_2$ e $H_{\infty}$ e 
+nas Figuras (\ref{fig:h2_norm_bounded}) e (\ref{fig:hinf_norm_bounded}) observa-se o
+comportamento do sistema nos dois casos, com o sistema no centro das incertezas e também 
+em algum dos vértices das incertezas.
+
+Apresentou-se também a modelagem matemática para incertezas do tipo Diagonais 
+(Seção \ref{sec:carac_diagonais}) e elemento a elemento (Seção \ref{sec:carac_elemento}).
+
+Sa Seção \ref{sec:robust} foi apresentado resumidamente a modelagem matemática utilizada
+para resolver o problema de estabilidade dos sistemas sujeitos a cada uma das incertezas
+retratadas neste trabalho.
+
+Para a resolução dos problemas de incertezas para cumprimento das normas especificadas
+foi utilizado o Solver de LMI \cite{lmi_matlab} do Matlab. A ferramenta é muito interessante e facilita 
+muito o projeto e resolução da problemática que envolve sistemas mais complexos e com
+mais incertezas em sua formulação.
+
+Controladores robustos são muitas vezes não só desejados, mas também necessários em certos
+tipos de aplicações. Desta forma o estudo de modelagem, caracterização e resolução destes
+problemas se torna muito importante. O conhecimento matemático dos métodos que as ferramentas
+atuais utilizam para resolução dos problemas é também muito importante e útil para 
+qualquer engenheiro que venha a se deparar com problemas incertos e com requisitos de
+confiabilidade elevados.
+
+
