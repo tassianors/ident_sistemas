@@ -2,7 +2,7 @@ FILE=relat
 FILETEX=$(FILE).tex
 FILEDVI=$(FILE).dvi
 FILEBIB=$(FILE).aux
-OUTPUT=Output/multivariaveis_robusto.pdf
+OUTPUT=Output/ident_sys_method_non_parametric.pdf
 
 .PHONY: clean bib pdf
 

@@ -1,26 +1,6 @@
 \BOOKMARK [1][]{section.1}{Introdu\347\343o}{}
-\BOOKMARK [1][]{section.2}{Caracteriza\347\343o}{}
-\BOOKMARK [2][]{subsection.2.1}{Polit\363pica}{section.2}
-\BOOKMARK [2][]{subsection.2.2}{Limitada em norma}{section.2}
-\BOOKMARK [2][]{subsection.2.3}{Diagonais}{section.2}
-\BOOKMARK [2][]{subsection.2.4}{Elemento a elemento}{section.2}
+\BOOKMARK [1][]{section.2}{Bode e Nyquist}{}
+\BOOKMARK [2][]{subsection.2.1}{M\351todo B\341sico}{section.2}
+\BOOKMARK [2][]{subsection.2.2}{M\351todo melhorado}{section.2}
 \BOOKMARK [1][]{section.3}{Controle Robusto}{}
-\BOOKMARK [2][]{subsubsection.3.0.1}{Estabilidade quadr\341tica}{section.3}
-\BOOKMARK [2][]{subsection.3.1}{Polit\363pica}{section.3}
-\BOOKMARK [2][]{subsection.3.2}{Limitada em norma}{section.3}
-\BOOKMARK [2][]{subsection.3.3}{Diagonais}{section.3}
-\BOOKMARK [2][]{subsection.3.4}{Elemento a elemento}{section.3}
-\BOOKMARK [1][]{section.4}{Minimiza\347\343o da norma H2}{}
-\BOOKMARK [2][]{subsection.4.1}{H2 - Sistemas Lineares sem incertezas}{section.4}
-\BOOKMARK [2][]{subsection.4.2}{H2 - Incertezas do tipo polit\363pico}{section.4}
-\BOOKMARK [3][]{subsubsection.4.2.1}{Simula\347\343o}{subsection.4.2}
-\BOOKMARK [2][]{subsection.4.3}{H2 - Incertezas limitadas em norma}{section.4}
-\BOOKMARK [3][]{subsubsection.4.3.1}{Simula\347\343o}{subsection.4.3}
-\BOOKMARK [1][]{section.5}{Norma H}{}
-\BOOKMARK [2][]{subsection.5.1}{H - Sistemas Lineares sem incertezas}{section.5}
-\BOOKMARK [2][]{subsection.5.2}{H - Incertezas do tipo polit\363pico}{section.5}
-\BOOKMARK [3][]{subsubsection.5.2.1}{Simula\347\343o}{subsection.5.2}
-\BOOKMARK [2][]{subsection.5.3}{H - Incertezas limitadas em norma}{section.5}
-\BOOKMARK [3][]{subsubsection.5.3.1}{Simula\347\343o}{subsection.5.3}
-\BOOKMARK [1][]{section.6}{Conclus\365es}{}
-\BOOKMARK [1][]{section*.1}{Refer\352ncias}{}
+\BOOKMARK [1][]{section.4}{Conclus\365es}{}
