@@ -1,49 +1,26 @@
 %===============================================================================
 \section{Introdução}
 
-Neste trabalho será apresentado o projeto de controladores denominados Robustos. Para 
-tanto será apresentado o conceito de um controlador Robusto. A fim de modelar um
-sistema sujeito a incertezas será apresentado alguns métodos para que sua modelagem
-matemática seja possível. 
+Identificação de sistemas por métodos não paramétricos são aqueles que não resultam 
+em um modelo matemático tal como uma função de transferência, mas sim numa representação 
+gráfica que caracteriza a dinâmica do sistema em estudo \cite{aguirre}.
 
-Para tornar o estudo mais claro será utilizado um sistema físico onde estará sujeito a
-perturbações e/ou incertezas. Sobre este sistema será feito a modelagem seguindo cada um
-dos processos e com estes modelos será efetuado uma simulação. 
-
-Esta simulação será baseada no projeto de uma realimentação de estados com o intuito de
-satisfazer a minimização da norma $H2$ e $H_{\infty}$.
-
-O sistema utilizado é apresentado no sistema de equações de estado descrito em (\ref{eq:intro_sis}).
+O sistema que será estudado neste trabalho tem sua função de transferência apresentado em 
+(\ref{eq:ft_sistema}). Este sistema ainda está sujeito a perturbação na saída, em forma de
+ruido.
 
 \begin{equation}
-\begin{matrix}
-A=\begin{bmatrix}
-0 & 1\\ 
--ba &a+b 
-\end{bmatrix} &
-B=\begin{bmatrix}
-0\\ 
-k
-\end{bmatrix} 
-\end{matrix}
-\label{eq:intro_sis}
+G(s)\frac{10}{s^2 +2s +20}
+\label{eq:ft_sistema}
 \end{equation}
 
-Este sistema possui a função de transferência apresentado em (\ref{eq:intro_transf}).
+NA figura (\ref{fig:intro_sistema}) é apresentado como o ruido é adicionado ao sistema para que
+as simulações possam ser feitas.
 
-\begin{equation}
-G(s)=\frac{k}{(s-a)(s-b)}
-\label{eq:intro_transf}
-\end{equation}
-
-Os parâmetros $a, b, k$ estão sujeitos as variações apresentadas em (\ref{eq:intro_limit}).
-
-\begin{equation}
-\begin{matrix}
-b= & -0.012725 & \\ 
-k= & [k_1 \; k_2] =& [-0.4649.10^{-4} \; -0.7449.10^{-4}]\\ 
-a= & [a_1 \; a_2] =& [-0.25 \; -2]
-\end{matrix}
-\label{eq:intro_limit}
-\end{equation}
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.70\columnwidth]{figures/sistema_ruido.eps}
+	\caption{Sistema em estudo sujeito ao efeito de ruido branco na saída do processo.}
+	\label{fig:intro_sistema}
+\end{figure}
 
