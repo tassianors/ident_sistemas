@@ -9,6 +9,7 @@
 \usepackage{tikz}
 \usepackage{amsmath}
 \usepackage{listings}
+\lstset{language=Python}
 
 \lstset{stepnumber=2, frame=single,tabsize=2, breaklines=true, basicstyle=\footnotesize}
 
@@ -41,13 +42,17 @@
 \thispagestyle{empty}\pagestyle{empty}
 
 \begin{abstract}
-Neste trabalho será apresentado a caracterização de um sistema sujeito a incertezas. A caracterização
-será baseada nos seguintes tipos: Politópicas, limitadas em norma, diagonal e elemento por elemento.
+Este trabalho tem por objetivo demonstrar de forma simplificada um caso de uso de modelagem
+de sistema por métodos não paramétricos. Será apresentado desde a abordagem mais simples, onde
+aplica-se simplesmente uma onda senoidal e observa-se a amplitude e a fase da onda produzida na 
+saída do processo, até métodos um pouco mais rebuscado, que buscam minimizar a influência
+do ruido sobre o sistema.
 
-Para cada uma das incertezas caracterizadas será projetada uma realimentação de estados para minimizar
-a norma {\it{$H_2$}} em malha fechada. O mesmo será feito para minimizar a norma {\it{$H_{\infty}$}}
+Para isso será utilizado um sistema com função de transferência conhecida, onde será aplicado 
+um ruido branco de média zero, e serão utilizados os métodos comentados anteriormente para
+levantar a função de transferência do processo sujeito ao ruido.
 
-Ao fim será feita uma breve comparação entre os resultados obtidos no trabalho.
+Ao fim será apresentado um comparativo dos resultados obtidos em cada método.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -58,6 +63,8 @@ Identificação de sistemas lineares, métodos não paramétricos.
 \input{input/bode_nyquest.tex}
 \input{input/resp_impulsiva.tex}
 \input{input/concl.tex}
+\input{input/apendix.tex}
+
 
 \bibliographystyle{IEEEtran}
 \bibliography{biblio}
