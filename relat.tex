@@ -9,9 +9,30 @@
 \usepackage{tikz}
 \usepackage{amsmath}
 \usepackage{listings}
-\lstset{language=Python}
 
-\lstset{stepnumber=2, frame=single,tabsize=2, breaklines=true, basicstyle=\footnotesize}
+\lstset{ %
+language=Matlab,                % choose the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=none,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=2,                   % the step between two line-numbers. If it's 1 each line 
+                                % will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=false,	                % adds a frame around the code
+tabsize=2,		                % sets default tabsize to 2 spaces
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                % also try caption instead of title
+escapeinside={\%*}{*)}         % if you want to add a comment within your code
+%morekeywords={*,...}            % if you want to add more keywords to the set
+}
+\lstset{caption=Descriptive Caption Text,label=DescriptiveLabel}
 
 \hypersetup{
 	colorlinks,
@@ -22,7 +43,7 @@
 	bookmarksopen=true,
 	pdftitle={Modelagem e identificação de sistemas},
 	pdfauthor={Tassiano Neuhaus},
-	pdfsubject={Métodos não paramétricos de identificação},
+	pdfsubject={Métodos paramétricos de identificação},
 	pdfkeywords={Identificação de sistemas}
 	%pdfpagemode=FullScreen
 }
@@ -32,7 +53,7 @@
 
 \begin{document}
 
-\title{Métodos não paramétricos de identificação de sistemas}
+\title{Métodos paramétricos de identificação de sistemas - Trabalho 3}
 
 \author{Tassiano Neuhaus\\
 {\small Universidade Federal do Rio Grande do Sul - Departamento de Engenharia Elétrica\\Av. Osvaldo Aranha, 103 - Bairro Bom Fim CEP: 90035-190 - Porto Alegre - RS - Brasil}\\
@@ -42,26 +63,17 @@
 \thispagestyle{empty}\pagestyle{empty}
 
 \begin{abstract}
-Este trabalho tem por objetivo demonstrar de forma simplificada um caso de uso de modelagem
-de sistema por métodos não paramétricos. Será apresentado desde a abordagem mais simples, onde
-aplica-se simplesmente uma onda senoidal e observa-se a amplitude e a fase da onda produzida na 
-saída do processo, até métodos um pouco mais rebuscado, que buscam minimizar a influência
-do ruido sobre o sistema.
-
-Para isso será utilizado um sistema com função de transferência conhecida, onde será aplicado 
-um ruido branco de média zero, e serão utilizados os métodos comentados anteriormente para
-levantar a função de transferência do processo sujeito ao ruido.
-
-Ao fim será apresentado um comparativo dos resultados obtidos em cada método.
+Este trabalho tem o objetivo de demonstrar três diferentes métodos para identificacão de um 
+sistema. 
 \end{abstract}
 
 \begin{IEEEkeywords}
-Identificação de sistemas lineares, métodos não paramétricos.
+Identificação de sistemas lineares, métodos paramétricos.
 \end{IEEEkeywords}
 
 \input{input/intro.tex}
-\input{input/bode_nyquest.tex}
-\input{input/resp_impulsiva.tex}
+\input{input/estimativa.tex}
+\input{input/mmq.tex}
 \input{input/concl.tex}
 \input{input/apendix.tex}
 
