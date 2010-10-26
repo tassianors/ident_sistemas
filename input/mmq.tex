@@ -1,6 +1,215 @@
-\section{Método de identificacão por mínimos quadrados}
+\section{Método de identificação por mínimos quadrados}
 \label{sec:mmq}
 %===============================================================================
 
+Nesta Seção será apresentado um exemplo de identificação de sistema utilizando
+o processo de mínimos quadrados. Será para tanto escolhido uma {\it{Função de
+transferência}}(\ref{eq:mmq_ft}) e aplicado um ruido sobre a mesma, e então
+aplicado diferentes entradas ao processo e coletados os dados que a planta
+fornecer. Com estas informações será aplicado o método dos mínimos quadrados
+e os resultados serão comparados.
 
+O Script utilizado para as simulações está disponível no Anexo (\ref{anx-2}).
+
+\begin{equation}
+G(z)=\frac{a}{z+b}+\nu
+\label{eq:mmq_ft}
+\end{equation}
+
+Aplicando-se a transformada Z inversa à equação (\ref{eq:mmq_ft}) obtém-se 
+a equação de diferenças (\ref{eq:mmq_eq_diff}).
+
+\begin{equation}
+y(t)=a\;u(t-1)-b\;y(t-1)
+\label{eq:mmq_eq_diff}
+\end{equation}
+
+O critério dos mínimos quadrados para o problema de regressão linear onde a
+saída é definida por (\ref{eq:mmq_rl_y}). Para a equação (\ref{eq:mmq_ft})
+obtém-se (\ref{eq:mmq_rl_var}).
+
+\begin{equation}
+y(t)=\Theta ' \phi
+\label{eq:mmq_rl_y}
+\end{equation}
+
+\begin{equation}
+\begin{matrix}
+\Theta=\begin{bmatrix}
+a\\ 
+b
+\end{bmatrix} & 
+\phi(t)=\begin{bmatrix}
+u(t-1)\\ 
+-y(t-1)
+\end{bmatrix}
+\end{matrix}
+\label{eq:mmq_rl_var}
+\end{equation}
+
+Para o critério dos mínimos quadrados tem-se (\ref{eq:mmq}). \cite{system_identification}
+
+\begin{equation}
+J(\Theta)=\frac{1}{2N}\sum_{t=1}^{N}[y(t)-\hat{y}(t, \Theta)]^2
+\label{eq:mmq}
+\end{equation}
+
+Que tem por solução (\ref{eq:mmq_sol}).
+
+\begin{equation}
+\Phi '\Phi \Theta=y'\Phi
+\label{eq:mmq_sol}
+\end{equation}
+
+Onde $\Phi $ é definido com em (\ref{eq:mmq_phi}).\cite{aguirre}
+
+\begin{equation}
+\Phi=\begin{bmatrix}
+\phi '(1)\\ 
+\phi '(2)\\ 
+\vdots \\ 
+\phi '(N)
+\end{bmatrix}
+\label{eq:mmq_phi}
+\end{equation}
+
+Para o exemplo apresentado neste trabalho $\Phi$ fica como abaixo:
+
+\begin{equation}
+\Phi=\begin{bmatrix}
+u(0) & -y(0)\\ 
+u(1) & -y(1)\\ 
+u(2) & -y(2)\\ 
+u(3) & -y(3)\\ 
+u(4) & -y(4)\\ 
+\vdots \\ 
+u(N-1) & -y(N-1)\\ 
+\end{bmatrix}
+\nonumber
+\end{equation}
+
+\subsection{Simulação}
+\label{sec:mmq_simul}
+%===============================================================================
+
+A simulação realizada foi sobre um sistema com os parâmetros $a=1, b=0.9$ acrescido
+de um ruido de aproximadamente 5\% do sinal de saída do sistema. Aplicou-se o algoritmo
+sobre 10 entradas aleatórias diferentes e o resultado obtido é apresentado na Tabela 
+(\ref{tab:mmq_noise_5}).
+
+O sinal de entrada aplicado aleatório é semelhante ao apresentado na Figura (\ref{fig:mmq_noise})
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_noise.eps}
+	\caption{Entrada aleatória aplicada no processo para a identificação do sistema.}
+	\label{fig:mmq_noise}
+\end{figure}
+
+
+\begin{table}[htbp]
+  \begin{center}
+	\caption{Simulação com ruido de 5\% e entrada aleatória.}
+	\label{tab:mmq_noise_5}
+	\begin{small}
+	  \begin{tabular}{cll}
+		\hline
+		Simulação &  a & b  \\
+		\hline
+		1	& 1.0052	& 0.8992	 \\
+		2	& 0.9983	& 0.9928	 \\
+		3	& 1.0071	& 0.8929	 \\
+		4	& 1.0049	& 0.8927	 \\
+		5	& 0.9999	& 0.8923	 \\
+		6	& 1.0076	& 0.9023	 \\
+		7	& 1.0011	& 0.9026	 \\
+		8	& 1.0031	& 0.8922	 \\
+		9	& 1.0047	& 0.8929	 \\
+		10	& 1.0008	& 0.8924	 \\
+		\hline
+		Média & 1.0033 	& 0.8994 \\
+		Desv padrão & 0.0031 & 0.0009 \\
+		\hline
+	  \end{tabular}
+	\end{small}
+  \end{center}
+\end{table}
+
+Aumentando-se o ruido para 10\% chega-se a tabela (\ref{tab:mmq_noise_10}).
+
+\begin{table}[htbp]
+  \begin{center}
+	\caption{Simulação com ruido de 10\% e entrada aleatória.}
+	\label{tab:mmq_noise_10}
+	\begin{small}
+	  \begin{tabular}{cll}
+		\hline
+		Simulação &  a & b  \\
+		\hline
+		1	& 1.0083	& 0.8995	 \\
+		2	& 1.0020	& 0.8989	 \\
+		3	& 0.9952	& 0.8993	 \\
+		4	& 0.9896	& 0.8994	 \\
+		5	& 0.9910	& 0.8982	 \\
+		6	& 1.0001	& 0.8987	 \\
+		7	& 1.0004	& 0.9018	 \\
+		8	& 1.0052	& 0.8989	 \\
+		9	& 0.9893	& 0.8986	 \\
+		10	& 0.9984	& 0.8986	 \\
+		\hline
+		Média & 0.9980	& 0.8992 \\
+		Desv padrão & 0.0066 & 0.0010 \\
+		\hline
+	  \end{tabular}
+	\end{small}
+  \end{center}
+\end{table}
+
+A fim de corroborar o funcionamento do método, foi aplicado na entrada um
+sinal senoidal composto pela soma de 3 senoides de diferentes frequências, 
+para que o sinal de entrada não fosse muito monótono e conseguisse excitar 
+o sistema adequadamente. Na Figura (\ref{fig:mmq_sin}) é apresentado o sinal 
+aplicado em uma das simulações e na Tabela (\ref{tab:mmq_sin_10}) é apresentado
+o resultado das 10 simulações do sistema com um ruido de 10\% na saída do processo.
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_sin.eps}
+	\caption{Entrada senoidal aplicada no processo para a identificação do sistema.}
+	\label{fig:mmq_sin}
+\end{figure}
+
+\begin{table}[htbp]
+  \begin{center}
+	\caption{Simulação com ruido de 10\% e entrada senoidal composta pela soma de 3 senoides.}
+	\label{tab:mmq_sin_5}
+	\begin{small}
+	  \begin{tabular}{cll}
+		\hline
+		Simulação &  a & b  \\
+		\hline
+		1	& 0.9636	& 0.8506	 \\
+		2	& 0.9552	& 0.8104	 \\
+		3	& 0.9304	& 0.7522	 \\
+		4	& 0.9399	& 0.7840	 \\
+		5	& 0.9006	& 0.7822	 \\
+		6	& 0.9579	& 0.7443	 \\
+		7	& 1.0212	& 0.9162	 \\
+		8	& 0.9466	& 0.7951	 \\
+		9	& 0.9476	& 0.7913	 \\
+		10	& 0.9360	& 0.7947	 \\
+		\hline
+		Média & 0.9499	& 0.8021 \\
+		Desv padrão & 0.0307 & 0.0497 \\
+		\hline
+	  \end{tabular}
+	\end{small}
+  \end{center}
+\end{table}
+
+Observa-se nitidamente que a aplicação de um sinal aleatório na entrada do sistema
+produz resultados muito mais satisfatórios se comparado com a entrada senoidal com
+3 componentes de frequência. Isso se deve ao fato que o sinal periódico excita menos
+o sistema do que o sinal aleatório, produzindo melhores resultados na estimação dos
+parâmetros do sistema.
 
