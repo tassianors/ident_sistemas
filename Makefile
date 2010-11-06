@@ -2,7 +2,7 @@ FILE=relat
 FILETEX=$(FILE).tex
 FILEDVI=$(FILE).dvi
 FILEBIB=$(FILE).aux
-OUTPUT=Output/ident_sys_method_parametric-trab3.pdf
+OUTPUT=Output/ident_sys_method_parametric-trab4.pdf
 
 .PHONY: clean bib pdf
 
