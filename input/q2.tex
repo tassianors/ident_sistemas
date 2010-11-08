@@ -14,18 +14,18 @@ H_o(z)=\frac{z}{z-0.8}
 E com ruido branco com $ \lambda ^2 =0.1$.
 
 \begin{itemize}
-	\item Realize uma simulacão aplicando na entrada um ruido branco com $\lambda ^2=1$.
-	\item Plote 100 estimativas de $\hat{\theta}$, a elipse de 95\% de confianca e
-	verifique o valor médio obtido e avalie a polarizacão da estimativa.
+	\item Realize uma simulação aplicando na entrada um ruido branco com $\lambda ^2=1$.
+	\item Plote 100 estimativas de $\hat{\theta}$, a elipse de 95\% de confiança e
+	verifique o valor médio obtido e avalie a polarização da estimativa.
 	\item Repita o item anterior com $H(z)=1$.
 \end{itemize}
 
 \subsection{Item 1 e 2}
 %===============================================================================
 
-Para realizacão desta simulacão foi utilizado o script apresentado no Anexo 1.
+Para realização desta simulação foi utilizado o script apresentado no Anexo 1.
 
-Utilizando um ruido branco como entrada, com média zero, e $\lambda ^2 = 1$, obtem-se 
+Utilizando um ruido branco como entrada, com média zero, e $\lambda ^2 = 1$, obtém-se 
 os resultados apresentados na Figura (\ref{fig:q2_noise}).
 
 \begin{figure}[htbp]
@@ -36,8 +36,8 @@ os resultados apresentados na Figura (\ref{fig:q2_noise}).
 \end{figure}
 
 Observa-se que as estimativas em média chegam relativamente próximas ao valor real (a=2, b=0.8).
-Desta forma conclui-se que não há erro de polarizacão. Quando o ruido inserido não possui média
-zero, há a observacão de erro de polarizacão, como é apresentado na Figura (\ref{fig:q2_noise_pol}).
+Desta forma conclui-se que não há erro de polarização. Quando o ruido inserido não possui média
+zero, há a observação de erro de polarização, como é apresentado na Figura (\ref{fig:q2_noise_pol}).
 
 \begin{figure}[htbp]
 	\center
@@ -52,8 +52,9 @@ os valore estimados médios foram de a=1.9999 e b=0.8000.
 \subsection{Item 3}
 %===============================================================================
 
-Na figura (\ref{fig:q2_noise_h1}) observa-se a simulacão para o mesmo sistema do item anterior,
-mas com o ruido branco sujeito a funcão de transferencia $H(z) = 1$.
+Na figura (\ref{fig:q2_noise_h1}) observa-se a simulação para o mesmo sistema do item anterior,
+mas com o ruido branco sujeito a função de transferência $H(z) = 1$. Observa-se que a acuracidade
+da média dos pontos não é a mesma que quando a função de transferência $H(z)$ é como em (\ref{eq:q2arx}.
 
 \begin{figure}[htbp]
 	\center
@@ -62,4 +63,5 @@ mas com o ruido branco sujeito a funcão de transferencia $H(z) = 1$.
 	$H(z)=1$.}
 	\label{fig:q2_noise_h1}
 \end{figure}
+
 

@@ -13,7 +13,7 @@ bib:
 	bibtex $(FILEBIB)
 	latex $(FILE)
 pdf:
-	dvipdf -s -G0  $(FILEDVI) $(OUTPUT)
+	dvipdf -s $(FILEDVI) $(OUTPUT)
 
 clean:
 	rm *.aux *.log *.dvi *.bbl *.blg 
