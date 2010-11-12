@@ -80,7 +80,7 @@ plot(a, b, 'bo');
 hold;
 plot(ma, mb, 'rx');
 hold;
-title('Simulacao para entrada do tipo ruido branco com media zero e H(z)=1')
+title('Simulacao para entrada do tipo ruido branco com media zero - ARX')
 xlabel('Valor da estimativa para a variavel b')
 ylabel('Valor da estimativa para a variavel a')
 legend('Estimativas', 'Media')
