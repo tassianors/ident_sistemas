@@ -13,11 +13,14 @@ STD=0.1;
 tempo = 0:Ts:Tf;
 N=size(tempo, 2);
 
-M=500;
+M=300;
 
 % TFs
 G=tf([2],[1 -0.8], Ts);
-H=tf([1 0],[1 -0.8], Ts);
+% item 1 e 2
+%H=tf([1 0],[1 -0.8], Ts);
+% item 3
+H=tf([1],[1], Ts);
 
 % Replace the default stream with a stream whose seed is based on CLOCK, so
 % RAND will return different values in different MATLAB sessions
@@ -33,7 +36,6 @@ n=size(teta, 1);
 % numero de vezes que sera aplicado o metodo.
 a=zeros(M,1);
 b=zeros(M,1);
-err_teta=zeros(M,2);
 for j=1:M
     % make a randon noise with std = 0.1
     ran=rand(N, 1);
@@ -44,7 +46,7 @@ for j=1:M
     % make noise be zero mean
     rh=(ran_s-m)*STD;
     
-    % make a randon noise with std = 0.1
+    % make a randon noise with std = 1
     ran=rand(N, 1);
     s=std(ran);
     m=mean(ran);
@@ -65,21 +67,30 @@ for j=1:M
 
     % make sure, rank(phy) = n :)
     teta_r=inv(phy'*phy)*phy'*y;
-    err_teta(j, 1)=teta_r(1)-0.8;
-    err_teta(j, 2)=teta_r(3)-2;
     % to be used in grafic plot
     a(j)=teta_r(1);
     b(j)=teta_r(3);
 end
-PN=err_teta'*err_teta;
+PN=[a, b];
 ma=mean(a)
 sa=std(a);
 mb=mean(b)
 sb=std(b);
 plot(a, b, 'bo');
 hold;
-plot(ma, mb, 'ro');
+plot(ma, mb, 'rx');
 hold;
-circle = rsmak('circle');
-fnplt(circle);
-ellipse = fncmb(circle,PN);
+title('Simulacao para entrada do tipo ruido branco com media zero e H(z)=1')
+xlabel('Valor da estimativa para a variavel b')
+ylabel('Valor da estimativa para a variavel a')
+legend('Estimativas', 'Media')
+
+%valor da tabela chi-quadrado para 95% de confianca
+chi = 5.991;
+ang = linspace(0,2*pi,360)';
+[avetor,SCR,avl] = princomp(PN);
+Diagonal= diag(sqrt(chi*avl));
+elipse=[cos(ang) sin(ang)] * Diagonal * avetor' + repmat(mean(PN), 360, 1);
+line(elipse(:,1), elipse(:,2), 'linestyle', '-', 'color', 'k');
+
+

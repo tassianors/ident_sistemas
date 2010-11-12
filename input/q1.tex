@@ -26,7 +26,7 @@ F(z, \theta)=1+f_1 Z^{-1}+f_2 Z^{-2}+\cdots +f_{nf} Z^{-nf}
 \nonumber
 \end{equation}
 
-Baseado nestas informações existem modelos onde apenas alguns destes polinómios são 
+Baseado nestas informações existem modelos onde apenas alguns destes polinômios são 
 diferentes de 1. Na Tabela (\ref{tab:model}) são apresentados alguns destes modelos
 mais comumente utilizados.
 
@@ -37,7 +37,7 @@ mais comumente utilizados.
 	\begin{small}
 	  \begin{tabular}{rc}
 		\hline
-		Modelo & Polinómios diferentes de 1 \\
+		Modelo & Polinômios diferentes de 1 \\
 		\hline
 		FIR	& B \\
 		ARX	& A B \\
@@ -155,3 +155,60 @@ A partir de (\ref{eq:q1_model}) tem-se que o modelo ARMAX fica (\ref{eq:q1_model
 A(z)Y(t)=B(z, \theta)U(t)+C(z, \theta)e(t)
 \label{eq:q1_model_armax}
 \end{equation}
+
+A equação (\ref{eq:q1_model_armax}) pode ser reescrita :
+
+\begin{equation}
+\begin{matrix}
+Y(t)=b_1 Z^{-1}U(t)+b_2 Z^{-2}U(t)+\cdots +b_{nb} Z^{-nb}U(t)\\
+	 -a_1 Z^{-1}Y(t)-b_2 Z^{-2}Y(t)-\cdots -a_{na} Z^{-na}Y(t) + e(t)\\
+	+c_1 Z^{-1}e(t)+c_2 Z^{-2}e(t)+\cdots +c_{nc} Z^{-nc}e(t)
+\end{matrix}
+\nonumber
+\end{equation}
+
+O que pode ser escrito como em (\ref{eq:q1_yt}). Onde:
+
+\begin{equation}
+\begin{matrix}
+\theta = \begin{bmatrix}
+a_1\\ 
+\vdots \\ 
+a_{na}\\ 
+b_1\\ 
+\vdots \\ 
+b_{nb} \\
+c_1\\ 
+\vdots \\ 
+c_{nc}
+\end{bmatrix}
+ & 
+\varphi (t)=\begin{bmatrix}
+y(t-1)\\ 
+\vdots \\ 
+y(t-na)\\ 
+u(t-1)\\ 
+\vdots \\ 
+u(t-nb)\\
+e(t-1)\\ 
+\vdots \\ 
+e(t-nb)
+\end{bmatrix}
+\\ 
+& \\
+\Phi = \begin{bmatrix}
+\varphi '(1)\\ 
+\varphi '(2)\\ 
+\vdots\\ 
+\varphi '(N)
+\end{bmatrix} & 
+\end{matrix}
+\nonumber
+\end{equation}
+
+O sistema é apresentado na forma para que seja aplicado o critério dos mínimos quadrados
+mas existem valores na matriz $\phi(t)$ que não são mensuráveis ($e(t-1) ...$ ) o que 
+torna o modelo não aplicável para este método de minimização. Desta forma se o método 
+for aplicado, teremos erro de polarização no resultado obtido.
+
+
