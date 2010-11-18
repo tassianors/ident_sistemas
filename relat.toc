@@ -1,0 +1,10 @@
+\select@language {brazilian}
+\contentsline {section}{\numberline {I}Introdu\c c\~ao}{2}{section.1}
+\contentsline {section}{\numberline {II}Quest\~ao 1}{2}{section.2}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}ARX}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}ARMAX}{3}{subsection.2.2}
+\contentsline {section}{\numberline {III}Quest\~ao 2}{3}{section.3}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Item 1 e 2}{3}{subsection.3.1}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Item 3}{3}{subsection.3.2}
+\contentsline {section}{\numberline {IV}Conclus\~oes}{4}{section.4}
+\contentsline {section}{Ap{\^e}ndice}{4}{section*.2}

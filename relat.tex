@@ -9,6 +9,9 @@
 \usepackage{tikz}
 \usepackage{amsmath}
 \usepackage{listings}
+\makeatletter
+\def\@xobeysp{ }
+\makeatother
 
 \lstset{ %
 language=Matlab,                % choose the language of the code
@@ -34,18 +37,26 @@ escapeinside={\%*}{*)}         % if you want to add a comment within your code
 }
 \lstset{caption=Descriptive Caption Text,label=DescriptiveLabel}
 
+% reference : http://en.wikibooks.org/wiki/LaTeX/Hyperlinks
 \hypersetup{
-	colorlinks,
-	debug=true,
-	linkcolor=black,  %%% cor do tableofcontents, \ref, \footnote, etc
-	citecolor=red,  %%% cor do \cite
-	urlcolor=blue,   %%% cor do \url e \href
-	bookmarksopen=true,
-	pdftitle={Modelagem e identificação de sistemas},
-	pdfauthor={Tassiano Neuhaus},
-	pdfsubject={Métodos paramétricos de identificação},
-	pdfkeywords={Identificação de sistemas}
-	%pdfpagemode=FullScreen
+    bookmarks=true,												% show bookmarks bar?
+    unicode=false,												% non-Latin characters in Acrobat¿s bookmarks
+    pdftoolbar=true,											% show Acrobat¿s toolbar?
+    pdfmenubar=true,											% show Acrobat¿s menu?
+    pdffitwindow=false,											% window fit to page when opened
+    pdfstartview={FitH},										% fits the width of the page to the window
+    pdftitle={Modelagem e identificação de sistemas},			% title
+    pdfauthor={Tassiano Neuhausi (tassianors@gmail.com)},		% author
+    pdfsubject={Métodos paramétricos de identificação de sistemas},   % subject of the document
+    pdfcreator={Tassiano Neuhaus},								% creator of the document
+    pdfproducer={Producer},										% producer of the document
+    pdfkeywords={Identificação de sistemas} {Métodos paramétricos}, % list of keywords
+    pdfnewwindow=true,											% links in new window
+    colorlinks=true,											% false: boxed links; true: colored links
+    linkcolor=black,											% color of internal links
+    citecolor=red,												% color of links to bibliography
+    filecolor=magenta,											% color of file links
+    urlcolor=blue												% color of external links
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,17 +64,18 @@ escapeinside={\%*}{*)}         % if you want to add a comment within your code
 
 \begin{document}
 
-\title{Identificação de sistemas lineares - Trabalho 5}
+\title{Modelagem e Identificação de sistemas lineares}
 
 \author{Tassiano Neuhaus\\
 {\small Universidade Federal do Rio Grande do Sul - Departamento de Engenharia Elétrica\\Av. Osvaldo Aranha, 103 - Bairro Bom Fim CEP: 90035-190 - Porto Alegre - RS - Brasil}\\
-}%\thanks{Tassiano Neuhaus, tassianors@gmail.com, tel +55-51-91760154}}
+}%\thanks{Tassiano Neuhaus, tassianors@gmail.com, tel +55-51-91760154}
 
 \maketitle
+
 \thispagestyle{empty}\pagestyle{empty}
 
 \begin{abstract}
-Trabalho 5, identificar um modelo ARX e também um modelo para $\boldsymbol{S}\in \boldsymbol{M}$.
+\input{input/abstract.tex}
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -71,8 +83,11 @@ Identificação de sistemas lineares, métodos paramétricos.
 \end{IEEEkeywords}
 
 \input{input/intro.tex}
-\input{input/arx.tex}
-\input{input/modelo_sm.tex}
+\input{input/modelling.tex}
+\input{input/non_parametric.tex}
+\input{input/parametric.tex}
+\input{input/mmq.tex}
+\input{input/non_arx_model.tex}
 \input{input/concl.tex}
 \input{input/apendix.tex}
 
