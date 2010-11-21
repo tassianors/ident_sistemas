@@ -8,7 +8,11 @@ close all; clear all;
 
 % Definitions
 Ts=10e-3;
-Tf=10;
+% frequency used when u(t) is a sinusoidal signal.
+freq=pi/20;
+
+Tf=10*2*pi/freq;
+
 STD=0.1;
 tempo = 0:Ts:Tf;
 N=size(tempo, 2);
@@ -18,9 +22,8 @@ M=300;
 % TFs
 G=tf([2],[1 -0.8], Ts);
 % item 1 e 2
+%H=tf([1 0],[1 -0.8], Ts);
 H=tf([1 0.9],[1 -0.5], Ts);
-% item 3
-%H=tf([1],[1], Ts);
 
 % Replace the default stream with a stream whose seed is based on CLOCK, so
 % RAND will return different values in different MATLAB sessions
@@ -28,10 +31,10 @@ RandStream.setDefaultStream( RandStream('mt19937ar', 'seed', sum(100*clock)));
 
 % identification using MMQ
 % model y(t)=2*u(t-1)+0.8*y(t-1) +u(t) +0.8*y(t-1)
-teta=[0.8; 1; 2];
+teta=[2; 0.8];
 n=size(teta, 1);
 % e entrada u saida do controlador
-%phy=[y(t-1); u(t); u(t-1)]
+%phy=[ u(t-1); y(t-1)]
 
 % numero de vezes que sera aplicado o metodo.
 a=zeros(M,1);
@@ -45,13 +48,15 @@ for j=1:M
     m=mean(ran_s);
     % make noise be zero mean
     rh=(ran_s-m)*STD;
-    
-    % make a randon noise with std = 1
-    ran=rand(N, 1);
-    s=std(ran);
-    m=mean(ran);
-    % now rr has std=1;
-    rr=(ran-m)/s;
+
+%     % make a randon noise with std = 1
+%     ran=rand(N, 1);
+%     s=std(ran);
+%     m=mean(ran);
+%     % now rr has std=1;
+%     rr=(ran-m)/s;
+    rr=sin(freq*tempo);
+    mean(rr)
     
     yr=lsim(G, rr, tempo);
     ynoise=lsim(H, rh, tempo);
@@ -60,16 +65,15 @@ for j=1:M
     
     phy=zeros(N, n);
     for t=2:N
-        phy(t, 1)=y(t-1);
-        phy(t, 2)=u(t);
-        phy(t, 3)=u(t-1);
+        phy(t, 1)=u(t-1);
+        phy(t, 2)=y(t-1);
     end
 
     % make sure, rank(phy) = n :)
     teta_r=inv(phy'*phy)*phy'*y;
     % to be used in grafic plot
     a(j)=teta_r(1);
-    b(j)=teta_r(3);
+    b(j)=teta_r(2);
 end
 PN=[a, b];
 ma=mean(a)
@@ -80,7 +84,7 @@ plot(a, b, 'bo');
 hold;
 plot(ma, mb, 'rx');
 hold;
-title('Simulacao para entrada do tipo ruido branco com media zero - ARX')
+title('Simulacao do sistema para um modelo ARX')
 xlabel('Valor da estimativa para a variavel b')
 ylabel('Valor da estimativa para a variavel a')
 legend('Estimativas', 'Media')

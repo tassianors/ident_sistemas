@@ -1,214 +1,84 @@
-\section{Questão 1}
-\label{sec:q1}
+\section{Modelo ARX}
+\label{sec:arx}
 %===============================================================================
 
-Questão: verificar de o LSE (estimador de mínimos quadrados) produz estimativas 
-não polarizadas no caso de estrituras do tipo ARX ARMAX e OE.
-
-Genericamente, modelos utilizados para identificação de sistemas podem ser representados
-pela equação (\ref{eq:q1_model}).
+O sistema real apresentado em (\ref{eq:system}) será identificado pelo modelo ARX onde
+genericamente o modelo utilizado é como apresentado em (\ref{eq:generic_model}) e 
+para o modelo ARX tem-se que apenas os polinomios $A$ e $B$ são diferentes de 1. \cite{aguirre}
 
 \begin{equation}
-A(z, \theta)Y(t)=\frac{B(z, \theta)}{F(z, \theta)}U(t)+\frac{C(z, \theta)}{D(z, \theta)}e(t)
-\label{eq:q1_model}
+A(q, \theta)Y(t)=\frac{B(q, \theta)}{F(q, \theta)}U(t)+\frac{C(q, \theta)}{D(q, \theta)}e(t)
+\label{eq:generic_model}
 \end{equation}
 
 Onde:
 
 \begin{equation}
 \begin{matrix}
-A(z, \theta)=1+a_1 Z^{-1}+a_2 Z^{-2}+\cdots +a_{na} Z^{-na}\\
-B(z, \theta)=b_1 Z^{-1}+b_2 Z^{-2}+\cdots +b_{nb} Z^{-nb}\\ 
-C(z, \theta)=1+c_1 Z^{-1}+c_2 Z^{-2}+\cdots +c_{nc} Z^{-nc}\\ 
-D(z, \theta)=1+d_1 Z^{-1}+d_2 Z^{-2}+\cdots +d_{na} Z^{-nd}\\ 
-F(z, \theta)=1+f_1 Z^{-1}+f_2 Z^{-2}+\cdots +f_{nf} Z^{-nf} 
+A(q, \theta)=1+a_1 q^{-1}+a_2 q^{-2}+\cdots +a_{na} q^{-na}\\
+B(q, \theta)=b_1 q^{-1}+b_2 q^{-2}+\cdots +b_{nb} q^{-nb}\\ 
+C(q, \theta)=1+c_1 q^{-1}+c_2 q^{-2}+\cdots +c_{nc} q^{-nc}\\ 
+D(q, \theta)=1+d_1 q^{-1}+d_2 q^{-2}+\cdots +d_{na} q^{-nd}\\ 
+F(q, \theta)=1+f_1 q^{-1}+f_2 q^{-2}+\cdots +f_{nf} q^{-nf} 
 \end{matrix}
 \nonumber
 \end{equation}
 
-Baseado nestas informações existem modelos onde apenas alguns destes polinômios são 
-diferentes de 1. Na Tabela (\ref{tab:model}) são apresentados alguns destes modelos
-mais comumente utilizados.
-
-\begin{table}[htbp]
-  \begin{center}
-	\caption{Modelos comumente utilizados para identificação de sistemas}
-	\label{tab:model}
-	\begin{small}
-	  \begin{tabular}{rc}
-		\hline
-		Modelo & Polinômios diferentes de 1 \\
-		\hline
-		FIR	& B \\
-		ARX	& A B \\
-		ARMAX & A B C \\
-		ARMA & A C \\
-		ARARMAX & A B C D \\
-		OE & B F \\
-		BJ & B F C D \\
-		\hline
-	  \end{tabular}
-	\end{small}
-  \end{center}
-\end{table}
-
-
-\subsection{ARX}
-\label{sec:q1_arx}
-%===============================================================================
-
-A partir de (\ref{eq:q1_model}) tem-se que o modelo ARX fica (\ref{eq:q1_model_arx}).
+Desta forma o modelo ARX pode ser representado como em (\ref{eq:model_arg_g}). Para o
+sistema apresentado em (\ref{eq:system}), o modelo ARX fica como em (\ref{eq:model_arx}).
 
 \begin{equation}
-A(z, \theta)Y(t)=B(z, \theta)U(t)+e(t)
-\label{eq:q1_model_arx}
+A(q, \theta)Y(t)=B(q, \theta)U(t)+e(t)
+\label{eq:model_arx_g}
 \end{equation}
-
-A equação (\ref{eq:q1_model_arx}) pode ser reescrita :
 
 \begin{equation}
-\begin{matrix}
-Y(t)=b_1 Z^{-1}U(t)+b_2 Z^{-2}U(t)+\cdots +b_{nb} Z^{-nb}U(t)\\
-	 -a_1 Z^{-1}Y(t)-b_2 Z^{-2}Y(t)-\cdots -a_{na} Z^{-na}Y(t) + e(t)
-\end{matrix}
-\nonumber
+G(q, \theta )=\frac{a}{q-b}\;\;\;\;\;H(q, \theta)=\frac{q}{q-b}
+\label{eq:model_arx}
 \end{equation}
 
-O que pode ser escrito como em (\ref{eq:q1_yt}).
+Este modelo não consegue representar o sistema descrito em (\ref{eq:system}). 
+Foi utilizado o script do matlab apresentado no Anexo (\ref{anx_arx_simul}) para 
+simular as estimativas obridas para os parametros $a$ e $b$ deste modelo, o script
+utiliza o método dos minimos quadrados para estimar os parametros.
 
-\begin{equation}
-Y(t)=\varphi ' \theta +e(t)
-\label{eq:q1_yt}
-\end{equation}
+O resultado da simulacão é apresentado na Figura (\ref{fig:arx}).
 
-Onde:
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/arx.eps}
+	\caption{Simulacão do sistema para uma entrada aleatória e utilizando o modelo ARX.}
+	\label{fig:arx}
+\end{figure}
 
-\begin{equation}
-\begin{matrix}
-\theta = \begin{bmatrix}
-a_1\\ 
-\vdots \\ 
-a_{na}\\ 
-b_1\\ 
-\vdots \\ 
-b_{nb}
-\end{bmatrix}
- & 
-\varphi (t)=\begin{bmatrix}
-y(t-1)\\ 
-\vdots \\ 
-y(t-na)\\ 
-u(t-1)\\ 
-\vdots \\ 
-u(t-nb)
-\end{bmatrix}
-\\ 
-& \\
-\Phi = \begin{bmatrix}
-\varphi '(1)\\ 
-\varphi '(2)\\ 
-\vdots\\ 
-\varphi '(N)
-\end{bmatrix} & 
-\end{matrix}
-\nonumber
-\end{equation}
+A média das estimativas obtidas para o sistema foi de $a=2.003$ e $b=0.7999$.
 
-Pode -se então encontrar a estimativa de $\theta$, ou seja $\hat{\theta}$.
+Aplicando na entrada do processo uma senoide de frequencia $\pi /4$ obtem-se a estimativa
+como apresentado na Figura (\ref{fig:arx_sin_pi4}).
 
-\begin{equation}
-\begin{matrix}
-\hat{\theta}=(\Phi' \Phi)^{-1}(\Phi'(\Phi \theta_0+e))=\theta_0+(\Phi' \Phi)^{-1}\Phi'e\\ 
-E\{ \hat{\theta} \}=\theta_0+(\Phi' \Phi)^{-1}\Phi'E\{ e(t)\}
-\end{matrix}
-\nonumber
-\end{equation}
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/arx_sin_pi4.eps}
+	\caption{Simulacão do sistema para uma entrada $sin(\pi /4)$ e utilizando o modelo ARX.}
+	\label{fig:arx_sin_pi4}
+\end{figure}
 
-Mas como $E\{ e(t)\}=0$, pois o ruido possui média zero. A estimativa de $\hat{\theta}$ é 
-o próprio $\theta$.
-
-De forma semelhante pode-se escrever:
-
-\begin{equation}
-\begin{matrix}
-E\{(\hat{\theta}-\theta)(\hat{\theta}-\theta)' \}=E\{((\Phi'\Phi)^{-1}\Phi'e)((\Phi'\Phi)^{-1}\Phi'e)' \}
-\\
-=(\Phi'\Phi)^{-1}\Phi' E\{ e\; e'\}\Phi(\Phi'\Phi)^{-1}
-\\ 
-=E\{(\hat{\theta}-\theta)(\hat{\theta}-\theta)' \}=conv(\hat{\theta})=\lambda^2(\Phi'\Phi)^{-1}\\
-pois : E\{ e\; e'\} = \lambda^2 I
-\end{matrix}
-\nonumber
-\end{equation}
-
-Já que a convolução da estimativa $\hat{\theta}$ corresponde ao valor encontrado, o
-erro de polarização para o sistema ARX é igual a zero.
+A média das estimativas obtidas para o sistema foi de $a=2.1627$ e $b=0.7837$.
 
 
-\subsection{ARMAX}
-\label{sec:q1_armax}
-%===============================================================================
+Aplicando na entrada do processo uma senoide de frequencia $\pi /20$ obtem-se a estimativa
+como apresentado na Figura (\ref{fig:arx_sin_pi20}).
 
-A partir de (\ref{eq:q1_model}) tem-se que o modelo ARMAX fica (\ref{eq:q1_model_armax}).
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/arx_sin_pi20.eps}
+	\caption{Simulacão do sistema para uma entrada $sin(\pi /4)$ e utilizando o modelo ARX.}
+	\label{fig:arx_sin_pi4}
+\end{figure}
 
-\begin{equation}
-A(z)Y(t)=B(z, \theta)U(t)+C(z, \theta)e(t)
-\label{eq:q1_model_armax}
-\end{equation}
+A média das estimativas obtidas para o sistema foi de $a=2.1687$ e $b=0.7831$.
 
-A equação (\ref{eq:q1_model_armax}) pode ser reescrita :
-
-\begin{equation}
-\begin{matrix}
-Y(t)=b_1 Z^{-1}U(t)+b_2 Z^{-2}U(t)+\cdots +b_{nb} Z^{-nb}U(t)\\
-	 -a_1 Z^{-1}Y(t)-b_2 Z^{-2}Y(t)-\cdots -a_{na} Z^{-na}Y(t) + e(t)\\
-	+c_1 Z^{-1}e(t)+c_2 Z^{-2}e(t)+\cdots +c_{nc} Z^{-nc}e(t)
-\end{matrix}
-\nonumber
-\end{equation}
-
-O que pode ser escrito como em (\ref{eq:q1_yt}). Onde:
-
-\begin{equation}
-\begin{matrix}
-\theta = \begin{bmatrix}
-a_1\\ 
-\vdots \\ 
-a_{na}\\ 
-b_1\\ 
-\vdots \\ 
-b_{nb} \\
-c_1\\ 
-\vdots \\ 
-c_{nc}
-\end{bmatrix}
- & 
-\varphi (t)=\begin{bmatrix}
-y(t-1)\\ 
-\vdots \\ 
-y(t-na)\\ 
-u(t-1)\\ 
-\vdots \\ 
-u(t-nb)\\
-e(t-1)\\ 
-\vdots \\ 
-e(t-nb)
-\end{bmatrix}
-\\ 
-& \\
-\Phi = \begin{bmatrix}
-\varphi '(1)\\ 
-\varphi '(2)\\ 
-\vdots\\ 
-\varphi '(N)
-\end{bmatrix} & 
-\end{matrix}
-\nonumber
-\end{equation}
-
-O sistema é apresentado na forma para que seja aplicado o critério dos mínimos quadrados
-mas existem valores na matriz $\phi(t)$ que não são mensuráveis ($e(t-1) ...$ ) o que 
-torna o modelo não aplicável para este método de minimização. Desta forma se o método 
-for aplicado, teremos erro de polarização no resultado obtido.
-
+Observa-se claramente que a estimativa está polarizada, ou seja, a média das estimativas 
+não está centrada nos valores reais dos parametros. Isso de deve ao fato que o modelo utilizado
+para a estimativa não consegue representar na totalidade o sistema original.
 
