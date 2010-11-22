@@ -97,5 +97,3 @@ ang = linspace(0,2*pi,360)';
 Diagonal= diag(sqrt(chi*avl));
 elipse=[cos(ang) sin(ang)] * Diagonal * avetor' + repmat(mean(PN), 360, 1);
 line(elipse(:,1), elipse(:,2), 'linestyle', '-', 'color', 'k');
-
-

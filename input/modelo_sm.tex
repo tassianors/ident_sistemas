@@ -2,3 +2,16 @@
 \label{sec:non_arx}
 %===============================================================================
 
+Como apresentado na secão (\ref{sec:arx}) o modelo ARX não consegue representar o
+sistema (\ref{eq:system}) completamente, e a estimativa dos parametros da Funcão
+de transferencia são polarizados. Para contornar este problema utilizaremos um
+modelo para descrever o sistema (\ref{eq:system}) de forma completa.
+
+O modelo escolhido para representar o sistema real é apresentado em (\ref{eq:compl}).
+
+\begin{equation}
+G(q, \theta )=\frac{a}{q-b}\;\;\;\;\;H(q, \theta)=\frac{q-c}{q-d}
+\label{eq:compl}
+\end{equation}
+
+
