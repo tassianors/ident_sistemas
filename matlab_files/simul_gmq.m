@@ -37,17 +37,10 @@ n=size(teta, 1);
 %phy=[ u(t-1); y(t-1)]
 
 % numero de vezes que sera aplicado o metodo.
-t1=zeros(M,1);
-t2=zeros(M,1);
-t3=zeros(M,1);
-t4=zeros(M,1);
-t5=zeros(M,1);
-t6=zeros(M,1);
-ychap=zeros(M,1);
-a=zeros(M,1);
-b=zeros(M,1);
-c=zeros(M,1);
-d=zeros(M,1);
+t1=zeros(M,1); t2=zeros(M,1); t3=zeros(M,1); t4=zeros(M,1);
+t5=zeros(M,1); t6=zeros(M,1); ychap=zeros(M,1);
+a=zeros(M,1); b=zeros(M,1); c=zeros(M,1); d=zeros(M,1);
+
 for j=1:M
     % make a randon noise with std = 0.1
     ran=rand(N, 1);
@@ -71,13 +64,14 @@ for j=1:M
     ynoise=lsim(H, rh, tempo);
     y=yr+ynoise;
     u=rr;
-    
+
+	% in the first simulation, use only u(t) and y(t)
     if j==1 
         phy=zeros(N, n-2);
     else
         phy=zeros(N, n);
     end
- j
+
     for t=3:N
         phy(t, 1)=u(t-1);
         phy(t, 2)=-u(t-2);
@@ -101,26 +95,30 @@ for j=1:M
         t5(j)=teta_r(5);
         t6(j)=teta_r(6);
     end
+	% get values of a b c and d
     a(j)=t1(j);
     d(j)=t2(j)/t1(j);
     c(j)=-t3(j)+d(j);
     b(j)=t4(j)/t3(j);
 end
+
 PN=[a, b];
 ma=mean(a)
 mb=mean(b)
 mc=mean(c)
 md=mean(d)
+% not useful
 me=mean(t5)
 mf=mean(t6)
 
+% plot a x b graph
 plot(a, b, 'bo');
 hold;
 plot(ma, mb, 'rx');
 hold;
 title('Simulacao do sistema - estimativa dos parametros a e b')
-xlabel('Valor da estimativa para a variavel b')
-ylabel('Valor da estimativa para a variavel a')
+xlabel('Valor da estimativa para a variavel a')
+ylabel('Valor da estimativa para a variavel b')
 legend('Estimativas', 'Media')
 
 %valor da tabela chi-quadrado para 95% de confianca
@@ -131,14 +129,15 @@ Diagonal= diag(sqrt(chi*avl));
 elipse=[cos(ang) sin(ang)] * Diagonal * avetor' + repmat(mean(PN), 360, 1);
 line(elipse(:,1), elipse(:,2), 'linestyle', '-', 'color', 'k');
 
+% plot c x d graph
 figure(2);
 plot(c, d, 'bo');
 hold;
 plot(mc, md, 'rx');
 hold;
 title('Simulacao do sistema - estimativa dos parametros c e d - Ruido')
-xlabel('Valor da estimativa para a variavel d')
-ylabel('Valor da estimativa para a variavel c')
+xlabel('Valor da estimativa para a variavel c')
+ylabel('Valor da estimativa para a variavel d')
 legend('Estimativas', 'Media')
 
 %valor da tabela chi-quadrado para 95% de confianca

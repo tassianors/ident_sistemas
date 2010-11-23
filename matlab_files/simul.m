@@ -86,8 +86,8 @@ hold;
 plot(ma, mb, 'rx');
 hold;
 title('Simulacao do sistema para um modelo ARX')
-xlabel('Valor da estimativa para a variavel b')
-ylabel('Valor da estimativa para a variavel a')
+xlabel('Valor da estimativa para a variavel a')
+ylabel('Valor da estimativa para a variavel b')
 legend('Estimativas', 'Media')
 
 %valor da tabela chi-quadrado para 95% de confianca
