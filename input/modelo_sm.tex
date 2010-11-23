@@ -32,6 +32,32 @@ para os parâmetros $a$, $b$, $c$ e $d$ para a função $G(q, \theta)$ e $H(q, \the
 \label{eq:gmq_eq}
 \end{equation}
 
+Desta forma temos para o método dos mínimos quadrados as seguintes equiões:
+
+\begin{equation}
+\Theta = \begin{bmatrix}
+a\\ 
+a\;d\\ 
+(d-c)\\ 
+b(d-c)\\ 
+(b+c)\\ 
+c\;b
+\end{bmatrix}
+\nonumber
+\end{equation}
+
+\begin{equation}
+\varphi (t)=\begin{bmatrix}
+u(t-1)\\ 
+-u(t-2)\\ 
+y(t-1)\\ 
+-y(t-2)\\ 
+\hat{y}(t-1/t-2,\theta)\\ 
+-\hat{y}(t-2/t-3,\theta)
+\end{bmatrix}^T
+\nonumber
+\end{equation}
+
 Nas Figuras (\ref{fig:gmq_ab}) e (\ref{fig:gmq_cd}) apresentam-se os valores estimados para os parâmetros
 das funções de transferência $G(q)$ e $H(q)$ respectivamente.
 
