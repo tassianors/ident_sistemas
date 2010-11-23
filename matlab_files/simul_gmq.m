@@ -11,7 +11,7 @@ Ts=1e-3;
 % frequency used when u(t) is a sinusoidal signal.
 freq=pi/20;
 
-Tf=5*2*pi/freq;
+Tf=1*2*pi/freq;
 
 STD=0.1;
 tempo = 0:Ts:Tf;
@@ -65,7 +65,7 @@ for j=1:M
     % now rr has std=1nusoidal input signal
     rr=(ran-m)/s;
     %sim
-    %rr=sin(freq*tempo);
+%     rr=sin(freq*tempo);
     
     yr=lsim(G, rr, tempo);
     ynoise=lsim(H, rh, tempo);
@@ -84,7 +84,7 @@ for j=1:M
         phy(t, 3)=y(t-1);
         phy(t, 4)=-y(t-2);
         if j~=1
-            ychap(t)=t1(j-1)*u(t-1)-t2(j-1)*u(t-2)+t3(j-1)*y(t-1)-t4(j-1)*y(t-2)+t5(j-1)*ychap(t-1)-t6(j-1)*ychap(t-2);
+            ychap(t)=t1(j-1)*u(t-1) -t2(j-1)*u(t-2) +t3(j-1)*y(t-1) -t4(j-1)*y(t-2) +t5(j-1)*ychap(t-1) -t6(j-1)*ychap(t-2);
             phy(t, 5)=ychap(t-1);
             phy(t, 6)=-ychap(t-2);
         end
@@ -108,9 +108,7 @@ for j=1:M
 end
 PN=[a, b];
 ma=mean(a)
-sa=std(a);
 mb=mean(b)
-sb=std(b);
 mc=mean(c)
 md=mean(d)
 me=mean(t5)
