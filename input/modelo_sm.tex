@@ -2,10 +2,10 @@
 \label{sec:non_arx}
 %===============================================================================
 
-Como apresentado na secão (\ref{sec:arx}) o modelo ARX não consegue representar o
-sistema (\ref{eq:system}) completamente, e a estimativa dos parametros da Funcão
-de transferencia são polarizados. Para contornar este problema utilizaremos um
-modelo para descrever o sistema (\ref{eq:system}) de forma completa.
+Como apresentado na seção (\ref{sec:arx}) o modelo ARX não consegue representar o
+sistema (\ref{eq:system}) completamente, e a estimativa dos parâmetros da Função
+de transferência são polarizados. Para contornar este problema utilizaremos um
+modelo para descrever o sistema (\ref{eq:system}) de forma completa. \cite{system_identification}
 
 O modelo escolhido para representar o sistema real é apresentado em (\ref{eq:compl}).
 
@@ -14,58 +14,62 @@ G(q, \theta )=\frac{a}{q-b}\;\;\;\;\;H(q, \theta)=\frac{q-c}{q-d}
 \label{eq:compl}
 \end{equation}
 
-utilizando o estimador ótimo (\ref{eq:estimador}) obtem-se a equacão de diferencas apresentada
-em (\ref{eq:gmq_eq}). Utilizando o script \ref{anx_gmq_simul} obtem-se o resultado para os parametros
-$a$, $b$, $c$ e $d$ para a funcão $G(q, \theta)$ e $H(q, \theta)$.
-
-%\begin{equation}
-%\hat{y}(t/t-1, \theta)=H^{-1}(q, \theta)G(q, \theta)u(t)+\[1-H^{-1}(q, \theta)\]y(t)
-%\label{eq:estimador}
-%\end{equation}
+Utilizando o estimador ótimo (\ref{eq:estimador}) obtém-se a equação de diferenças apresentada
+em (\ref{eq:gmq_eq}). Utilizando o {\it{script}} \ref{anx_gmq_simul} obtém-se o resultado
+para os parâmetros $a$, $b$, $c$ e $d$ para a função $G(q, \theta)$ e $H(q, \theta)$.
 
 \begin{equation}
-\hat{y}(t/t-1, \theta)=a\;u(t-1)-ad\;u(t-2)+(d-c)y(t-1)\\
--b(d-c)y(t-2)+(b+c)\hat{y}(t-1/t-2, \theta)-cb\;\hat{y}(t-2/t-3, \theta)
+\hat{y}(t/t-1, \theta)=H^{-1}(q, \theta)G(q, \theta)u(t)+[1-H^{-1}(q, \theta)]y(t)
 \label{eq:estimador}
 \end{equation}
+
+\begin{equation}
+\begin{matrix}
+\hat{y}(t/t-1, \theta)= & a\;u(t-1)-ad\;u(t-2) +(d-c)y(t-1)\\
+ & -b(d-c)y(t-2)+(b+c)\hat{y}(t-1/t-2, \theta)\\
+ & -cb\;\hat{y}(t-2/t-3, \theta)
+\end{matrix}
+\label{eq:gmq_eq}
+\end{equation}
+
+Nas Figuras (\ref{fig:gmq_ab}) e (\ref{fig:gmq_cd}) apresentam-se os valores estimados para os parâmetros
+das funções de transferência $G(q)$ e $H(q)$ respectivamente.
 
 \begin{figure}[htbp]
 	\center
 	\includegraphics[width=0.98\columnwidth]{figures/gmq_ab.eps}
-	\caption{Simulacão do sistema para uma entrada aleatória e utilizando o modelo completo - 
-		variaveis do processo $G(q)$ $a$ e $b$.}
+	\caption{Simulação do sistema para uma entrada aleatória e utilizando o modelo completo - 
+		variáveis do processo $G(q)$ $a$ e $b$.}
 	\label{fig:gmq_ab}
 \end{figure}
 
 \begin{figure}[htbp]
 	\center
 	\includegraphics[width=0.98\columnwidth]{figures/gmq_cd.eps}
-	\caption{Simulacão do sistema para uma entrada aleatória e utilizando o modelo completo - 
-		variaveis do ruido $H(q)$ $c$ e $d$.}
+	\caption{Simulação do sistema para uma entrada aleatória e utilizando o modelo completo - 
+		variáveis do ruido $H(q)$ $c$ e $d$.}
 	\label{fig:gmq_cd}
 \end{figure}
 
-resultando em uma média para as variaveis de 
+A média das estimativas para os parâmetros em questão é apresentado na Tabela (\ref{tab:gmq}).
 
-ma =
-
-    2.0000
-
-
-mb =
-
-    0.7748
-
-
-mc =
-
-   -0.9006
-
-
-md =
-
-    0.4875
-
-	colocar isso em uma tabela.
+\begin{table}[htbp]
+  \begin{center}
+	\caption{Média da estimativa para os parâmetros de $G(q)$ e $H(q)$}
+	\label{tab:gmq}
+	\begin{small}
+	  \begin{tabular}{cl}
+		\hline
+		Parâmetro	& Média	\\
+		\hline
+		a			& 2.0000 \\
+		b			& 0.7748 \\
+		c			& -0.9006 \\
+		d			& 0.4875 \\
+		\hline
+	  \end{tabular}
+	\end{small}
+  \end{center}
+\end{table}
 
 

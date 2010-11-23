@@ -1,5 +1,22 @@
 \section{Conclusões}
 \label{sec:concl}
 
-heheheheh jlhadkjhk;j hrlkjhe l;ohkwe rphfsl;khdf gl; isuhgfliusdfnh  lgsdfkjhg;
+Na seção (\ref{sec:arx}) obteve-se uma estimativa para o sistema (\ref{eq:system}), mesmo 
+que o modelo ARX utilizado (\ref{eq:model_arx}) não conseguisse representar o sistema 
+completamente. Desta forma obteve-se estimativas polarizadas para os parâmetros $a$ e $b$, 
+como observado nas Figuras (\ref{fig:arx_sin_pi4}) e (\ref{fig:arx_sin_pi20}), além de que
+a informação estimada para o ruido não era representativa com a realidade, já que para o modelo
+ARX considera-se que o ruido é submetido a influencia dos mesmos polos da função de transferência
+$G(q)$.
 
+Para resolver este grave problema da polarização foi utilizado o método dos mínimos quadrados
+generalizado, onde utilizando-se outro estimador (\ref{eq:estimador}) para sistema, obteve-se
+resultados bem mais promissores, que podem ser observados nas  Figuras (\ref{fig:gmq_ab}) e 
+(\ref{fig:gmq_cd}), com este algoritmo, foi possível considerar um modelo completo para representar 
+o sistema, o que trouxe a estimativa alem dos parâmetros de $G(q)$ também da função $H(q)$.
+
+Neste trabalho observamos que quando a família de modelos não representa o sistema real, tem-se
+erro de polarização das estimativas efetuadas. Desta forma, mesmo utilizando mais pontos para
+a simulação e fazendo-se mais simulações, os parâmetros estimados na média não chegam ao valor
+real do sistema. Foi apontado um algoritmo para resolução de problemas onde o modelo padrão dos 
+mínimos quadrados (ARX) não pode ser utilizado, e os resultados foram apresentados.

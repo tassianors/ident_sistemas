@@ -4,7 +4,7 @@
 
 O sistema real apresentado em (\ref{eq:system}) será identificado pelo modelo ARX onde
 genericamente o modelo utilizado é como apresentado em (\ref{eq:generic_model}) e 
-para o modelo ARX tem-se que apenas os polinomios $A$ e $B$ são diferentes de 1. \cite{aguirre}
+para o modelo ARX tem-se que apenas os polinômios $A$ e $B$ são diferentes de 1. \cite{aguirre}
 
 \begin{equation}
 A(q, \theta)Y(t)=\frac{B(q, \theta)}{F(q, \theta)}U(t)+\frac{C(q, \theta)}{D(q, \theta)}e(t)
@@ -37,48 +37,55 @@ G(q, \theta )=\frac{a}{q-b}\;\;\;\;\;H(q, \theta)=\frac{q}{q-b}
 \label{eq:model_arx}
 \end{equation}
 
+\begin{equation}
+y(t)=G(q, \theta)r(t)+H(q, \theta)e(t)
+\nonumber
+\end{equation}
+
+Onde $e(t)$ é ruido branco com média zero.
+
 Este modelo não consegue representar o sistema descrito em (\ref{eq:system}). 
 Foi utilizado o script do matlab apresentado no Anexo (\ref{anx_arx_simul}) para 
-simular as estimativas obridas para os parametros $a$ e $b$ deste modelo, o script
-utiliza o método dos minimos quadrados para estimar os parametros.
+simular as estimativas obtidas para os parâmetros $a$ e $b$ deste modelo, o script
+utiliza o método dos mínimos quadrados para estimar os parâmetros.
 
-O resultado da simulacão é apresentado na Figura (\ref{fig:arx}).
+O resultado da simulação é apresentado na Figura (\ref{fig:arx}).
 
 \begin{figure}[htbp]
 	\center
 	\includegraphics[width=0.98\columnwidth]{figures/arx.eps}
-	\caption{Simulacão do sistema para uma entrada aleatória e utilizando o modelo ARX.}
+	\caption{Simulação do sistema para uma entrada aleatória e utilizando o modelo ARX.}
 	\label{fig:arx}
 \end{figure}
 
 A média das estimativas obtidas para o sistema foi de $a=2.003$ e $b=0.7999$.
 
-Aplicando na entrada do processo uma senoide de frequencia $\pi /4$ obtem-se a estimativa
+Aplicando na entrada do processo uma senoide de frequência $\pi /4$ obtém-se a estimativa
 como apresentado na Figura (\ref{fig:arx_sin_pi4}).
 
 \begin{figure}[htbp]
 	\center
 	\includegraphics[width=0.98\columnwidth]{figures/arx_sin_pi4.eps}
-	\caption{Simulacão do sistema para uma entrada $sin(\pi /4)$ e utilizando o modelo ARX.}
+	\caption{Simulação do sistema para uma entrada $sin(\pi /4)$ e utilizando o modelo ARX.}
 	\label{fig:arx_sin_pi4}
 \end{figure}
 
 A média das estimativas obtidas para o sistema foi de $a=2.1627$ e $b=0.7837$.
 
 
-Aplicando na entrada do processo uma senoide de frequencia $\pi /20$ obtem-se a estimativa
+Aplicando na entrada do processo uma senoide de frequência $\pi /20$ obtém-se a estimativa
 como apresentado na Figura (\ref{fig:arx_sin_pi20}).
 
 \begin{figure}[htbp]
 	\center
 	\includegraphics[width=0.98\columnwidth]{figures/arx_sin_pi20.eps}
-	\caption{Simulacão do sistema para uma entrada $sin(\pi /4)$ e utilizando o modelo ARX.}
-	\label{fig:arx_sin_pi4}
+	\caption{Simulação do sistema para uma entrada $sin(\pi /4)$ e utilizando o modelo ARX.}
+	\label{fig:arx_sin_pi20}
 \end{figure}
 
 A média das estimativas obtidas para o sistema foi de $a=2.1687$ e $b=0.7831$.
 
 Observa-se claramente que a estimativa está polarizada, ou seja, a média das estimativas 
-não está centrada nos valores reais dos parametros. Isso de deve ao fato que o modelo utilizado
+não está centrada nos valores reais dos parâmetros. Isso de deve ao fato que o modelo utilizado
 para a estimativa não consegue representar na totalidade o sistema original.
 
