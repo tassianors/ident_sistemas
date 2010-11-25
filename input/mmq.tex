@@ -2,5 +2,84 @@
 \label{sec:mmq}
 %===============================================================================
 
+O método dos mínimos quadrados (MMQ) é um dos mais conhecidos e mais utilizados 
+nas mais diversas áreas da ciência e tecnologia. A origem da ideia básica pode ser
+encontrada nos trabalhos de Gaus sobre o estudo astronômicos. \cite{aguirre}
+
+\subsection{Sistema com solução única}
+
+Considerando-se que o sistema que será observado seja linear e invariante no tempo.
+Se a função $f$ que descreve o sistema for não linear o sistema poderá em principio 
+ser identificado por modelos não lineares. Com base nestas restrições temos que:
+
+\begin{equation}
+\begin{matrix}
+\begin{matrix}
+\begin{bmatrix}
+y_1\\ 
+y_2\\ 
+\vdots \\ 
+y_n
+\end{bmatrix} = &
+\begin{bmatrix}
+x_1 & x_2 & \cdots  & x_n
+\end{bmatrix} &
+\begin{bmatrix}
+\theta_1\\ 
+\theta_2\\ 
+\vdots \\ 
+\theta_n
+\end{bmatrix}
+\end{matrix}
+\\ \\
+y=X\theta
+\end{matrix}
+\nonumber
+\end{equation}
+
+Com $X \in \Re^{nxn}$. Desde que $X$ seja não singular é possível determinar $\theta$:
+
+\begin{equation}
+\theta=X^{-1}y
+\label{eq:mmq_base}
+\end{equation}
+
+Para sistemas sobredeterminados onde $ N > n$, A variável $X$ da equação (\ref{eq:mmq_base}) fica
+$X \in \Re^{Nxn}$. Como esta matriz não é quadrada, não é possível de ser invertida. Multiplicando-se
+a equação (\ref{eq:mmq_base}) por $X^T$ tem-se: \cite{aguirre}
+
+\begin{equation}
+X^Ty=X^TX\theta
+\nonumber
+\end{equation}
+
+De onde vem:
+
+\begin{equation}
+\theta = [X^T X]^{-1} X^T y
+\label{eq:mmq}
+\end{equation}
+
+O método dos mínimos quadrados minimiza o critério apresentado em (\ref{eq:mmq_j}).
+
+\begin{equation}
+J(\theta)=\frac{1}{2N}\sum_{t=1}^{N}[y(t)-\hat{y}(t, \theta)]^2
+\label{eq:mmq_j}
+\end{equation}
+
+Onde $\hat{y}(t, \theta)$ é a predição do sistema e pode ser representado como abaixo:
+
+\begin{equation}
+\hat{y}(t, \theta)=\theta^T \phi(t)
+\nonumber
+\end{equation}
+
+Desta forma pode se dizer que o sistema real é o próprio sistema estimado mais algum 
+erro de estimativa:
+
+\begin{equation}
+y(t) = \hat{y}(t, \theta) +e(t)=\theta^T \phi(t) + e(t)
+\nonumber
+\end{equation}
 
 
