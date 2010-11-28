@@ -7,6 +7,7 @@ nas mais diversas áreas da ciência e tecnologia. A origem da ideia básica pode s
 encontrada nos trabalhos de Gaus sobre o estudo astronômicos. \cite{aguirre}
 
 \subsection{Sistema com solução única}
+%===============================================================================
 
 Considerando-se que o sistema que será observado seja linear e invariante no tempo.
 Se a função $f$ que descreve o sistema for não linear o sistema poderá em principio 
@@ -43,6 +44,9 @@ Com $X \in \Re^{nxn}$. Desde que $X$ seja não singular é possível determinar $\t
 \theta=X^{-1}y
 \label{eq:mmq_base}
 \end{equation}
+
+\subsection{Sistema sobredeterminado}
+%===============================================================================
 
 Para sistemas sobredeterminados onde $ N > n$, A variável $X$ da equação (\ref{eq:mmq_base}) fica
 $X \in \Re^{Nxn}$. Como esta matriz não é quadrada, não é possível de ser invertida. Multiplicando-se
@@ -82,4 +86,201 @@ y(t) = \hat{y}(t, \theta) +e(t)=\theta^T \phi(t) + e(t)
 \nonumber
 \end{equation}
 
+\subsection{Estruturas de modelagem}
+%===============================================================================
+
+De forma genérica modelos para descrição de sistemas podem ser representados como em 
+(\ref{eq:mmq_generic_model}).
+
+\begin{equation}
+A(q, \theta)Y(t)=\frac{B(q, \theta)}{F(q, \theta)}U(t)+\frac{C(q, \theta)}{D(q, \theta)}e(t)
+\label{eq:mmq_generic_model}
+\end{equation}
+
+Onde:
+
+\begin{equation}
+\begin{matrix}
+A(q, \theta)=1+a_1 q^{-1}+a_2 q^{-2}+\cdots +a_{na} q^{-na}\\
+B(q, \theta)=b_1 q^{-1}+b_2 q^{-2}+\cdots +b_{nb} q^{-nb}\\ 
+C(q, \theta)=1+c_1 q^{-1}+c_2 q^{-2}+\cdots +c_{nc} q^{-nc}\\ 
+D(q, \theta)=1+d_1 q^{-1}+d_2 q^{-2}+\cdots +d_{na} q^{-nd}\\ 
+F(q, \theta)=1+f_1 q^{-1}+f_2 q^{-2}+\cdots +f_{nf} q^{-nf} 
+\end{matrix}
+\nonumber
+\end{equation}
+
+Baseado nestas informações existem modelos onde apenas alguns destes polinômios são 
+diferentes de 1. Na Tabela (\ref{tab:model}) são apresentados alguns destes modelos
+mais comumente utilizados.
+
+\begin{table}[htbp]
+  \begin{center}
+	\caption{Modelos comumente utilizados para identificação de sistemas}
+	\label{tab:model}
+	\begin{small}
+	  \begin{tabular}{rc}
+		\hline
+		Modelo & Polinômios diferentes de 1 \\
+		\hline
+		FIR	& B \\
+		ARX	& A B \\
+		ARMAX & A B C \\
+		ARMA & A C \\
+		ARARMAX & A B C D \\
+		OE & B F \\
+		BJ & B F C D \\
+		\hline
+	  \end{tabular}
+	\end{small}
+  \end{center}
+\end{table}
+
+O método dos mínimos quadrados utiliza intrinsecamente o modelo ARX para descrever 
+o modelo do sistema.
+
+\subsection{Controle de posição angular do motor DC}
+%===============================================================================
+
+O sistema descrito na seção (\ref{sec:modelling}) quando utilizamos o método dos 
+mínimos quadrados, intrinsecamente utilizamos o modelo ARX (\ref{eq:mmq_arx}) para 
+descrever este sistema. A partir de (\ref{eq:mmq_generic_model}) tem-se que o
+modelo ARX fica (\ref{eq:mmq_arx}).
+
+\begin{equation}
+A(q, \theta)Y(t)=B(q, \theta)U(t)+e(t)
+\label{eq:mmq_arx}
+\end{equation}
+
+A equação (\ref{eq:mmq_arx}) pode ser reescrita :
+
+\begin{equation}
+\begin{matrix}
+Y(t)=b_1 q^{-1}U(t)+b_2 q^{-2}U(t)+\cdots +b_{nb} q^{-nb}U(t)\\
+	 -a_1 q^{-1}Y(t)-b_2 q^{-2}Y(t)-\cdots -a_{na} q^{-na}Y(t) + e(t)
+\end{matrix}
+\nonumber
+\end{equation}
+
+O que pode ser escrito como em (\ref{eq:mmq_yt}).
+
+\begin{equation}
+Y(t)=\varphi ' \theta +e(t)
+\label{eq:mmq_yt}
+\end{equation}
+
+Onde:
+
+\begin{equation}
+\begin{matrix}
+\theta = \begin{bmatrix}
+a_1\\ 
+\vdots \\ 
+a_{na}\\ 
+b_1\\ 
+\vdots \\ 
+b_{nb}
+\end{bmatrix}
+ & 
+\varphi (t)=\begin{bmatrix}
+y(t-1)\\ 
+\vdots \\ 
+y(t-na)\\ 
+u(t-1)\\ 
+\vdots \\ 
+u(t-nb)
+\end{bmatrix}
+\\ 
+& \\
+\Phi = \begin{bmatrix}
+\varphi '(1)\\ 
+\varphi '(2)\\ 
+\vdots\\ 
+\varphi '(N)
+\end{bmatrix} & 
+\end{matrix}
+\nonumber
+\end{equation}
+
+Para o sistema de posicionamento do motor DC, a equação (\ref{eq:mmq_arx})
+fica como em (\ref{eq:mmq_motor_arx}).
+
+\begin{equation}
+G(q, \theta)=\frac{a}{(q-b)(q-c)} \;\;H(q, \theta)=\frac{q}{(q-b)(q-c)}
+\label{eq:mmq_motor_arx}
+\end{equation}
+
+A partir de (\ref{eq:mmq_motor_arx}) tem-se que o modelo pode ser descrito como 
+abaixo:
+
+\begin{equation}
+\begin{matrix}
+\theta = \begin{bmatrix}
+a & b+c & c
+\end{bmatrix}
+&
+\varphi (t)=\begin{bmatrix}
+r(t-2)\\ 
+y(t-1)\\ 
+y(t-2)
+\end{bmatrix}
+\end{matrix}
+\nonumber
+\end{equation}
+
+Sabe-se de antemão que o valor esperado para a variável $c$ é zero, já que existe um 
+integrador na planta em estudo. No Apêndice (\ref{appendix_mmq}) está o script utilizado 
+para chegar-se aos resultados obtidos para a estimativa do modelo utilizando o método dos
+mínimos quadrados.
+
+A figura (\ref{fig:mmq_arx}) apresenta os resultados obtidos na estimativa dos parâmetros
+a partir das medidas efetuadas sobre o sistema.
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_arx.eps}
+	\caption{TODO}
+	\label{fig:mmq_arx}
+\end{figure}
+
+TODO: colocar os valores médios obtidos para os parametros.
+
+\subsubsection{Resultados para um modelo incompleto}
+%===============================================================================
+
+Nesta secão será apresentado resultados para uma estimativa utilizando um modelo que não consegue
+descrever o sistema própriamente. Serão utilizados os mesmos dados da estimativa do item anterior.
+
+O modelo utilzado é descrito em (\ref{eq:mmq_motor_arx_inc}). Observa-se que o integrador não esta presente
+neste modelo, desta forma tem-se que o modelo das variáveis a serem utilizadas no método dos 
+minimos quadrados fica como em (\ref{eq:mmq_arx_inc_var}).
+
+\begin{equation}
+G(q, \theta)=\frac{a}{(q-b)} \;\;H(q, \theta)=\frac{q}{(q-b)}
+\label{eq:mmq_motor_arx}
+\end{equation}
+
+\begin{equation}
+\begin{matrix}
+\theta = \begin{bmatrix}
+a & b 
+\end{bmatrix}
+&
+\varphi (t)=\begin{bmatrix}
+r(t-1)\\ 
+y(t-1) 
+\end{bmatrix}
+\end{matrix}
+\nonumber
+\end{equation}
+
+Para este modelo chegou-se aos valores dos parametros $a$ e $b$ apresentados na 
+Figura (\ref{fig:mmq_arx_inc}).
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_arx.eps}
+	\caption{TODO}
+	\label{fig:mmq_arx_inc}
+\end{figure}
 

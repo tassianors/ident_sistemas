@@ -30,7 +30,7 @@ RandStream.setDefaultStream( RandStream('mt19937ar', 'seed', sum(100*clock)));
 
 % identification using MMQ
 % model y(t)=a*u(t-2)+(b+c)*y(t-1) +bc*y(t-2)
-teta=[2; 0.8; 0];
+teta=[2; 0.8];
 n=size(teta, 1);
 % e entrada u saida do controlador
 %phy=[ u(t-2); y(t-1); y(t-2)]
@@ -38,7 +38,6 @@ n=size(teta, 1);
 % numero de vezes que sera aplicado o metodo.
 a=zeros(M,1);
 b=zeros(M,1);
-c=zeros(M,1);
 for j=1:M
     % make a randon noise with std = 0.1
     ran=rand(N, 1);
@@ -68,7 +67,6 @@ for j=1:M
     for t=3:N
         phy(t, 1)=u(t-2);
         phy(t, 2)=y(t-1);
-        phy(t, 3)=y(t-2);
     end
 
     % make sure, rank(phy) = n :)
@@ -76,13 +74,12 @@ for j=1:M
     % to be used in grafic plot
     a(j)=teta_r(1);
     b(j)=teta_r(2);
-    c(j)=teta_r(3);
 end
 PN=[a, b];
 ma=mean(a)
 sa=std(a);
 mb=mean(b)
-mc=mean(c)
+
 
 plot(a, b, 'bo');
 hold;

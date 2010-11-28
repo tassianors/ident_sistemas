@@ -1,0 +1,76 @@
+\section{Método da variável instrumental - IV}
+\label{sec:iv}
+%===============================================================================
+
+Uma alternativa para a minimizacão da polarizacão PPA (propriedades de pequenas
+amostras) na estimativa do sistema é a polarizacào assintotica. A idéia é relaxar
+um pouco a definicão PPA e, por um lado, permitir que haja polarizacão para uma
+amostra pequena, mas por outro lado, verificar se tal polarizacão desaparece à 
+medida que o tamanho do conjunto de observacões cresce. \cite{aguirre}
+
+Para utilizacão deste método, esclhe-se um Instrumento $Z(t)$:
+
+\begin{equation}
+Z(t) \in \Re^{p}\; \forall t \;\;\; E(Z(t)\nu)=0
+\label{eq:iv_instrumento}
+\end{equation}
+
+\begin{equation}
+\hat{y}(t, \theta)=\phi ^T (t)\theta
+\nonumber
+\end{equation}
+
+\begin{equation}
+E[Z(t)(y(t)-\hat{y}(t, \theta)]=0
+\nonumber
+\end{equation}
+
+\begin{equation}
+E[Z(t)\phi^T (t)]\theta = E[Z(t)y(t)]
+\nonumber
+\end{equation}
+
+De onde vem:
+
+\begin{equation}
+\hat{\theta}_{N}^{iv}=[\sum_{t=1}^{N}Z(t)\phi^T(t)]^{-1}[\sum_{t=1}^{N}Z(t)y(t)]
+\label{eq:iv_estim}
+\end{equation}
+
+Após a escolha da estimativa $Z(t)$ que satisfaca (\ref{eq:iv_estim}) o passo seguinte 
+é calcular (\ref{eq:iv_estim_2}).
+
+\begin{equation}
+E[\hat{\theta}_{N}^{iv}-\theta_0]=0
+\label{eq:iv_estim_2}
+\end{equation}
+
+
+\subsection{Método aplicado ao controle de posicão}
+%===============================================================================
+
+Primeiro passo para aplicar o método das {\it{Variáveis instrumentais}} é escolher
+o instrumento que será utilizado.
+
+\begin{equation}
+\begin{matrix}
+w(t)=F(q)u(t)\\
+F(q)=q^{-1}\\ 
+w(t)=u(t-1)
+\end{matrix}
+\nonumber
+\end{equation}
+
+O que resulta em um instrumento apresentado em (\ref{eq:iv_motor_inst}).
+
+\begin{equation}
+Z(t)=\begin{bmatrix}
+w(t)\\ 
+w(t-1)\\ 
+\vdots \\
+w(t-p)
+\end{bmatrix}
+\label{eq:iv_motor_instr}
+\end{equation}
+
+
