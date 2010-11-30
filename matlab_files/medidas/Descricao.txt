@@ -1,0 +1,35 @@
+Rampa1 = A = 2.0, Freq = 0.1, Offset = 0 (rampa)
+Rampa2 = A = 2.0, Freq = 1.0, Offset = 0 (rampa)
+Rampa3 = A = 2.0, Freq = 0.5, Offset = 0 (rampa)
+Rampa4 = A = 2.0, Freq = 3.14, Offset = 0 (rampa)
+Rampa5 = A = 2.0, Freq = 0.01, Offset = 0 (rampa)
+
+
+Grafico2 = A = 2.0, Freq = 0.1, Offset = 0 (seno)
+Sen2 = A = 2.0, Freq = 1.0, Offset = 0 (seno)
+Sen3 = A = 2.0, Freq = 0.5, Offset = 0 (seno)
+Sen4 = A = 2.0, Freq = 1.67, Offset = 0 (seno)
+Sen5 = A = 2.0, Freq = 3.14, Offset = 0 (seno)
+Sen6 = A = 2.0, Freq = 0.1, Offset = 0 (seno)
+Sen7 = A = 2.0, Freq = ##, Offset = 0 (seno)
+
+
+Grafico3 = A = 2.0, Freq = 0.1, Offset = 0 (quadrada)
+Quad2 = A = 2.0, Freq = 1.0, Offset = 0 (quadrada)
+Quad3 = A = 2.0, Freq = 0.5, Offset = 0 (quadrada)
+
+teste e teste2 - rampa amplitude 1 e frequencia 3.14
+rampa-1 e rampa-2 - rampa amplitude 1 e frequencia 3.14
+
+volt12 e volt2 - seno amplitude 2 e frequencia 1.67
+quad-1 e quad-2 - quadrada amplitude 2 e frequencia 1
+
+
+
+
+kp = 3
+kd = 0.05
+ki = 0
+bsp = 1.0
+bsd = 0
+Tf = 0.006
