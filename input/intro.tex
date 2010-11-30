@@ -1,4 +1,27 @@
 %===============================================================================
 \section{Introdução}
 
+Neste trabalho será apresentado um sistema de para controle de posição angular,
+manipulado por um motor de corrente continua (DC). O objetivo principal, é estimar
+os valores das variáveis existentes no modelo escolhido para representar este sistema.
+
+Inicialmente será explicado o processo de escolha do modelo que representa a dinâmica
+deste sistema (Seção (\ref{sec:modelling})). Será explicitado quais considerações sobre
+o sistema foram feitas para se obter o modelo que será utilizado nas seções seguintes, 
+para determinar os parâmetros.
+
+Em seguida, será utilizado o método dos Mínimos quadrados (MQ), para estimar o sistema, 
+considerando-se para isso que o ruido sobre o sistema sofre influência dos mesmos polos
+que estão na planta, ou seja, que o modelo para o sistema se comporta como um modelo ARX.
+Nesta mesma seção (\ref{sec:mmq}) será apresentado os resultados para o mesmo sistema, 
+baseado nos mesmos dados, mas para um modelo que não representa o sistema físico, ou que 
+não consegue representa-lo.
+
+Na seção (\ref{sec:iv}) será apresentado o método das variáveis instrumentais, para estimar
+os valores do parâmetro para o modelo. Da mesma forma que para o método dos MQ, será
+utilizado um modelo que não representa o sistema real, e este método será aplicado para 
+determinar a qualidade dos resultados obtidos.
+
+Ao fim, será apresentado uma breve discussão sobre os resultados obtidos em ambos os métodos
+utilizados, e as considerações finais.
 

@@ -2,5 +2,43 @@
 \label{sec:modelling}
 %===============================================================================
 
+O objetivo da modelagem de um sistema é encontrar um modelo (função com parâmetros
+livres) que consiga representar o sistema físico de forma completa. A partir do
+conhecimento do sistema físico, fazem-se considerações sobre o sistema, para simplifica-lo
+a fim de tornar o modelo matemático o mais simples possível, mas que ainda represente
+o sistema real, com a margem de preciosidade definida, pela quantidade e qualidade 
+das simplificações aplicadas para chegar-se ao modelo matemático do sistema.
 
+\subsection{Sistema Físico}
+%===============================================================================
 
+O sistema físico em estudo neste trabalho, é um sistema para controle de posição, onde 
+o atuador é um motor de corrente continua (DC). Desta forma a entrada do sistema 
+é a tensão aplicada sobre os terminais do motor em Volts [V], e a saída é a posição
+angular do motor em radianos [rad].
+
+Na Figura (\ref{fig:motor_system}) pode ser vista a representacão eletrica e mecanica
+do motor em questão.
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.7\columnwidth]{figures/motor_system.eps}
+	\caption{TODO}
+	\label{fig:motor_system}
+\end{figure}
+
+As variáveis consideradas para a modelagem são as apresentadas abaixo:
+
+\begin{itemize}
+	\item $\omega$ = Velocidade do motor = variável de saída.
+	\item \it{v} = tensão aplicada na armadura = variável de entrada.
+	\item \it{ia} = corrente de armadura.
+	\item \it{L} = Indutância da armadura = $10\mu H$
+	\item \it{e} = Forca contra eletromotriz = $K_{2} \omega$
+	\item \it{$K_{2}$} = $5.5x10^{-2} V.s/rad$ 
+	\item \it{R} = Resistência do enrolamento da armadura = $0.2 \Omega$
+	\item \it{T} = Torque aplicado = $K_{i} ia$
+	\item \it{$K_{1}$} = $6x10^{-5} Kg.m/A$
+	\item \it{J} = Momento de inercia da carga = $4x10^{-3} Kg.m.s^{2}$
+	\item \it{f} = Atrito viscoso no eixo = $4x10^{-2} Kg.m.s/rad$
+\end{itemize}
