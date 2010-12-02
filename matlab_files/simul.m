@@ -18,12 +18,12 @@ tempo = 0:Ts:Tf;
 N=size(tempo, 2);
 
 M=300;
-
+Grafico2
 % TFs
 %ARX
 G=tf([2],[1 -0.8 0], Ts);
-H=tf([1 0],[1 -0.8 0], Ts);
-
+H=tf([1 0 0],[1 -0.8 0], Ts);
+po
 % Replace the default stream with a stream whose seed is based on CLOCK, so
 % RAND will return different values in different MATLAB sessions
 RandStream.setDefaultStream( RandStream('mt19937ar', 'seed', sum(100*clock)));
@@ -49,15 +49,15 @@ for j=1:M
     % make noise be zero mean
     rh=(ran_s-m)*STD;
 
-%     % make a randon noise with std = 1
-%     ran=rand(N, 1);
-%     s=std(ran);
-%     m=mean(ran);
-%     % now rr has std=1nusoidal input signal
-%     rr=(ran-m)/s;
+    % make a randon noise with std = 1
+    ran=rand(N, 1);
+    s=std(ran);
+    m=mean(ran);
+    % now rr has std=1nusoidal input signal
+    rr=(ran-m)/s;
     %sim
-    rr=sin(freq*tempo);
-    mean(rr)
+%     rr=sin(freq*tempo);
+%     mean(rr);
     
     yr=lsim(G, rr, tempo);
     ynoise=lsim(H, rh, tempo);

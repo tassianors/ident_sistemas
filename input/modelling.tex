@@ -17,28 +17,88 @@ o atuador é um motor de corrente continua (DC). Desta forma a entrada do sistema
 é a tensão aplicada sobre os terminais do motor em Volts [V], e a saída é a posição
 angular do motor em radianos [rad].
 
-Na Figura (\ref{fig:motor_system}) pode ser vista a representacão eletrica e mecanica
+Na Figura (\ref{fig:motor_system}) pode ser vista a representação elétrica e mecânica
 do motor em questão.
 
 \begin{figure}[htbp]
 	\center
 	\includegraphics[width=0.7\columnwidth]{figures/motor_system.eps}
-	\caption{TODO}
+	\caption{Representação elétrica e mecânica do motor}
 	\label{fig:motor_system}
 \end{figure}
 
 As variáveis consideradas para a modelagem são as apresentadas abaixo:
 
 \begin{itemize}
-	\item $\omega$ = Velocidade do motor = variável de saída.
-	\item \it{v} = tensão aplicada na armadura = variável de entrada.
+	\item $\omega$ = Velocidade do motor.
+	\item \it{v} = Tensão aplicada na armadura.
 	\item \it{ia} = corrente de armadura.
-	\item \it{L} = Indutância da armadura = $10\mu H$
+	\item \it{L} = Indutância da armadura.
 	\item \it{e} = Forca contra eletromotriz = $K_{2} \omega$
-	\item \it{$K_{2}$} = $5.5x10^{-2} V.s/rad$ 
-	\item \it{R} = Resistência do enrolamento da armadura = $0.2 \Omega$
+	\item \it{R} = Resistência do enrolamento da armadura.
 	\item \it{T} = Torque aplicado = $K_{i} ia$
-	\item \it{$K_{1}$} = $6x10^{-5} Kg.m/A$
-	\item \it{J} = Momento de inercia da carga = $4x10^{-3} Kg.m.s^{2}$
-	\item \it{f} = Atrito viscoso no eixo = $4x10^{-2} Kg.m.s/rad$
+	\item \it{J} = Momento de inercia da carga.
+	\item \it{f} = Atrito viscoso no eixo.
 \end{itemize}
+
+Tem-se desta forma as duas equacões que descrevem o sistema para a parte elétrica
+(\ref{eq:motor_elet}) e mecânica (\ref{eq:motor_mec}).
+
+\begin{equation}
+V-R\cdot Ia - L\frac{\mathrm{d} Ia}{\mathrm{d} x}-e = 0
+\label{eq:motor_elet}
+\end{equation}
+
+\begin{equation}
+J \dot{\omega}= T-f\omega
+\label{eq:motor_mec}
+\end{equation}
+
+A partir destas equacões diferenciais pode-se chegar ao sistema de equacões de estado 
+descrito em (\ref{eq:motor_eq_estados}).
+
+\begin{equation}
+\begin{matrix}
+\begin{bmatrix}
+\dot{Ia}\\ 
+\dot{\omega} \\
+\dot{\theta}
+\end{bmatrix}= &
+\begin{bmatrix}
+-R/L & -K_2/L & 0\\ 
+K_i/J & -f/J & 0 \\
+0 & 1 & 0
+\end{bmatrix}&
+\begin{bmatrix}
+Ia\\ 
+\omega \\
+\theta
+\end{bmatrix} + &
+\begin{bmatrix}
+1\\ 
+0\\
+0
+\end{bmatrix} V
+\end{matrix}
+\label{eq:motor_eq_estados}
+\end{equation}
+
+Com este sistema de equacões de estado, é possível obter-se as funões de transferências,
+que descrevem o sistema, para uma entrada e uma saída. Na equacão (\ref{eq:motor_pos_tf}) 
+apresenta-se a funcão de transferencia do motor, que relaciona a posicão com a tensão de entrada
+do motor.
+
+\begin{equation}
+G(s)=\frac{k1/JL}{s(s+f/L)(s+R/L)+s\;k1 k2/JL}
+\label{eq:motor_pos_tf}
+\end{equation}
+
+Devido a dinamica do sistema mecanico ser muito menor que a dinamica do sistema elétrico, 
+pode-se desconsiderar a influencia do polo elétrico do sistema, ficando a funcão de transfereicia
+como a seguir:
+
+\begin{equation}
+G(s)=\frac{\frac{k1}{JL}}{s(s+\frac{fL+k1 k2}{JL})}
+\label{eq:motor_pos_tf}
+\end{equation}
+

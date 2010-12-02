@@ -49,8 +49,14 @@ for j=1:M
     % make noise be zero mean
     rh=(ran_s-m)*STD;
 
+    % make a randon noise with std = 1
+    ran=rand(N, 1);
+    s=std(ran);
+    m=mean(ran);
+    % now rr has std=1nusoidal input signal
+    rr=(ran-m)/s;
     %sim
-    rr=sin(freq*tempo);
+%     rr=sin(freq*tempo);
     mean(rr)
     
     yr=lsim(G, rr, tempo);
