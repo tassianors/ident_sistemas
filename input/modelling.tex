@@ -83,9 +83,9 @@ Ia\\
 \label{eq:motor_eq_estados}
 \end{equation}
 
-Com este sistema de equacões de estado, é possível obter-se as funões de transferências,
-que descrevem o sistema, para uma entrada e uma saída. Na equacão (\ref{eq:motor_pos_tf}) 
-apresenta-se a funcão de transferencia do motor, que relaciona a posicão com a tensão de entrada
+Com este sistema de equações de estado, é possível obter-se as fumões de transferências,
+que descrevem o sistema, para uma entrada e uma saída. Na equação (\ref{eq:motor_pos_tf}) 
+apresenta-se a função de transferência do motor, que relaciona a posição com a tensão de entrada
 do motor.
 
 \begin{equation}
@@ -93,12 +93,27 @@ G(s)=\frac{k1/JL}{s(s+f/L)(s+R/L)+s\;k1 k2/JL}
 \label{eq:motor_pos_tf}
 \end{equation}
 
-Devido a dinamica do sistema mecanico ser muito menor que a dinamica do sistema elétrico, 
-pode-se desconsiderar a influencia do polo elétrico do sistema, ficando a funcão de transfereicia
+Devido a dinâmica do sistema mecânico ser muito menor que a dinâmica do sistema elétrico, 
+pode-se desconsiderar a influencia do polo elétrico do sistema, ficando a função de transferência
 como a seguir:
 
 \begin{equation}
 G(s)=\frac{\frac{k1}{JL}}{s(s+\frac{fL+k1 k2}{JL})}
-\label{eq:motor_pos_tf}
+\nonumber
 \end{equation}
+
+A equação anterior (\ref{eq:motor_pos_tf}) representa o comportamento da posição angular do motor
+baseado na entrada de tensão aplicada sobre seus terminais. Esta Função de transferência descreve este
+comportamento em um mundo de tempo continuo, nosso sistema é digital e com isso precisamos de uma
+representação discreta para esta mesma função (\ref{eq:motor_pos_tf_disc}).
+
+\begin{equation}
+G(q)=\frac{\frac{k1}{JL}}{q(q+\frac{fL+k1 k2}{JL})}
+\label{eq:motor_pos_tf_disc}
+\end{equation}
+
+Desta forma chega-se a uma modelagem do sistema que relaciona a posição em função da tensão aplicada
+sobre o motor. Para tanto foi considerado que a dinamica da parte mecânica do sistema é muito mais
+predominante que a dinâmica da parte elétrica, podendo esta ser desconsiderada para que o sistema 
+se torne um pouco mais simples.
 

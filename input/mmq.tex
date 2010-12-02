@@ -206,7 +206,7 @@ Para o sistema de posicionamento do motor DC, a equação (\ref{eq:mmq_arx})
 fica como em (\ref{eq:mmq_motor_arx}).
 
 \begin{equation}
-G(q, \theta)=\frac{a}{(q-b)(q-c)} \;\;H(q, \theta)=\frac{q}{(q-b)(q-c)}
+G(q, \theta)=\frac{a}{(q-b)(q-c)} \;\;H(q, \theta)=\frac{q^2}{(q-b)(q-c)}
 \label{eq:mmq_motor_arx}
 \end{equation}
 
@@ -243,21 +243,21 @@ a partir das medidas efetuadas sobre o sistema.
 	\label{fig:mmq_arx}
 \end{figure}
 
-TODO: colocar os valores médios obtidos para os parametros.
+TODO: colocar os valores médios obtidos para os parâmetros.
 
 \subsubsection{Resultados para um modelo incompleto}
 %===============================================================================
 
-Nesta secão será apresentado resultados para uma estimativa utilizando um modelo que não consegue
-descrever o sistema própriamente. Serão utilizados os mesmos dados da estimativa do item anterior.
+Nesta seção será apresentado resultados para uma estimativa utilizando um modelo que não consegue
+descrever o sistema propriamente. Serão utilizados os mesmos dados da estimativa do item anterior.
 
-O modelo utilzado é descrito em (\ref{eq:mmq_motor_arx_inc}). Observa-se que o integrador não esta presente
+O modelo utilizado é descrito em (\ref{eq:mmq_motor_arx_inc}). Observa-se que o integrador não esta presente
 neste modelo, desta forma tem-se que o modelo das variáveis a serem utilizadas no método dos 
-minimos quadrados fica como em (\ref{eq:mmq_arx_inc_var}).
+mínimos quadrados fica como em (\ref{eq:mmq_arx_inc_var}).
 
 \begin{equation}
 G(q, \theta)=\frac{a}{(q-b)} \;\;H(q, \theta)=\frac{q}{(q-b)}
-\label{eq:mmq_motor_arx}
+\label{eq:mmq_motor_arx_inc}
 \end{equation}
 
 \begin{equation}
@@ -271,10 +271,10 @@ r(t-1)\\
 y(t-1) 
 \end{bmatrix}
 \end{matrix}
-\nonumber
+\label{eq:mmq_arx_inc_var}
 \end{equation}
 
-Para este modelo chegou-se aos valores dos parametros $a$ e $b$ apresentados na 
+Para este modelo chegou-se aos valores dos parâmetros $a$ e $b$ apresentados na 
 Figura (\ref{fig:mmq_arx_inc}).
 
 \begin{figure}[htbp]
