@@ -1,4 +1,4 @@
-quad_1_Time = [
+quad1Time = [
 18.38;
 18.39;
 18.4;
@@ -5000,7 +5000,8 @@ quad_1_Time = [
 68.36;
 68.369995;
 ];
-quad_1_Value = [
+
+quad1Value = [
 -0.12569387;
 -0.11265338;
 -0.09586548;
@@ -10002,17 +10003,4 @@ quad_1_Value = [
 -0.1558978;
 -0.14152513;
 ];
-h=plot(quad_1_Time(:,1), quad_1_Value(:,1));
-axis([65.1500015258789,70.1500015258789,-15.0,15.0]);
-set(h(1),'Color',[1.0,0.0,0.0]);
-set(h(1),'LineStyle','-');
-set(h(1),'Marker','none');
-grid on
-set(gcf,'Color',[0.83137256,0.8156863,0.78431374]);
-set(gca,'Color',[1.0,1.0,1.0]);
-set(gca,'XColor',[0.0,0.0,0.0]);
-set(gca,'YColor',[0.0,0.0,0.0]);
-h=xlabel('Time');
-set(h,'Color',[0.0,0.0,0.0]);
-h=ylabel('Value');
-set(h,'Color',[0.0,0.0,0.0]);
+

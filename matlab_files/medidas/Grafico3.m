@@ -9147,3 +9147,5 @@ h=xlabel('Time');
 set(h,'Color',[0.0,0.0,0.0]);
 h=ylabel('Value');
 set(h,'Color',[0.0,0.0,0.0]);
+size(Grafico3_Time, 1) %4564
+size(Grafico3_Value, 1) % 4564
