@@ -18,11 +18,11 @@ Grafico3 = A = 2.0, Freq = 0.1, Offset = 0 (quadrada)
 Quad2 = A = 2.0, Freq = 1.0, Offset = 0 (quadrada)
 Quad3 = A = 2.0, Freq = 0.5, Offset = 0 (quadrada)
 
-teste e teste2 - rampa amplitude 1 e frequencia 3.14
-rampa-1 e rampa-2 - rampa amplitude 1 e frequencia 3.14
+teste e teste2 - rampa amplitude 1 e frequencia 3.14		OK
+rampa-1 e rampa-2 - rampa amplitude 1 e frequencia 3.14		OK
 
-volt12 e volt2 - seno amplitude 2 e frequencia 1.67
-quad-1 e quad-2 - quadrada amplitude 2 e frequencia 1
+volt12 e volt2 - seno amplitude 2 e frequencia 1.67		OK
+quad-1 e quad-2 - quadrada amplitude 2 e frequencia 1		OK
 
 
 

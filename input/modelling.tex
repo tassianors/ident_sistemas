@@ -41,7 +41,7 @@ As variáveis consideradas para a modelagem são as apresentadas abaixo:
 	\item \it{f} = Atrito viscoso no eixo.
 \end{itemize}
 
-Tem-se desta forma as duas equacões que descrevem o sistema para a parte elétrica
+Tem-se desta forma as duas equações que descrevem o sistema para a parte elétrica
 (\ref{eq:motor_elet}) e mecânica (\ref{eq:motor_mec}).
 
 \begin{equation}
@@ -54,7 +54,7 @@ J \dot{\omega}= T-f\omega
 \label{eq:motor_mec}
 \end{equation}
 
-A partir destas equacões diferenciais pode-se chegar ao sistema de equacões de estado 
+A partir destas equações diferenciais pode-se chegar ao sistema de equações de estado 
 descrito em (\ref{eq:motor_eq_estados}).
 
 \begin{equation}
@@ -89,7 +89,7 @@ apresenta-se a função de transferência do motor, que relaciona a posição com a t
 do motor.
 
 \begin{equation}
-G(s)=\frac{k1/JL}{s(s+f/L)(s+R/L)+s\;k1 k2/JL}
+G(s)=\frac{k_1/JL}{s(s+f/L)(s+R/L)+s\;k_1 k_2/JL}
 \label{eq:motor_pos_tf}
 \end{equation}
 
@@ -98,22 +98,45 @@ pode-se desconsiderar a influencia do polo elétrico do sistema, ficando a função
 como a seguir:
 
 \begin{equation}
-G(s)=\frac{\frac{k1}{JL}}{s(s+\frac{fL+k1 k2}{JL})}
+G(s)=\frac{\frac{k_1}{JL}}{s(s+\frac{fL+k_1 k_2}{JL})}
 \nonumber
 \end{equation}
 
 A equação anterior (\ref{eq:motor_pos_tf}) representa o comportamento da posição angular do motor
 baseado na entrada de tensão aplicada sobre seus terminais. Esta Função de transferência descreve este
-comportamento em um mundo de tempo continuo, nosso sistema é digital e com isso precisamos de uma
-representação discreta para esta mesma função (\ref{eq:motor_pos_tf_disc}).
+comportamento em tempo continuo, nosso sistema é digital e com isso precisamos de uma
+representação discreta para esta mesma função, para isso pode ser utilizados diversos métodos, como
+Euler backward, Euler forward, entre outras aproximações. Iremos neste trabalho utilizar a aproximação
+de Euler Forward (\ref{eq:modelling_forward}).
 
 \begin{equation}
-G(q)=\frac{\frac{k1}{JL}}{q(q+\frac{fL+k1 k2}{JL})}
+s\cong \frac{(z-1)}{T_S}
+\label{eq:modelling_forward}
+\end{equation}
+
+Desta forma, chega-se a uma função de transferência (\ref{eq:motor_pos_tf_disc}).
+
+\begin{equation}
+G(z)=\frac{a}{(z-1)(z-b)}
 \label{eq:motor_pos_tf_disc}
 \end{equation}
 
+Onde :
+
+\begin{equation}
+\begin{matrix}
+a=\alpha \;T_S^2\\ \;\\
+b=\beta T_S-1\\ \;\\
+\alpha = \frac{k_1}{JL}\\ \;\\
+\beta = \frac{fL+k_1 k_2}{JL}
+\end{matrix}
+\nonumber
+\end{equation}
+
+Com $T_S$ sendo a frequência de amostragem utilizada.
+
 Desta forma chega-se a uma modelagem do sistema que relaciona a posição em função da tensão aplicada
-sobre o motor. Para tanto foi considerado que a dinamica da parte mecânica do sistema é muito mais
+sobre o motor. Para tanto foi considerado que a dinâmica da parte mecânica do sistema é muito mais
 predominante que a dinâmica da parte elétrica, podendo esta ser desconsiderada para que o sistema 
 se torne um pouco mais simples.
 

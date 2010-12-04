@@ -216,7 +216,7 @@ abaixo:
 \begin{equation}
 \begin{matrix}
 \theta = \begin{bmatrix}
-a & b+c & c
+a & b+c & -bc
 \end{bmatrix}
 &
 \varphi (t)=\begin{bmatrix}
@@ -228,10 +228,48 @@ y(t-2)
 \nonumber
 \end{equation}
 
-Sabe-se de antemão que o valor esperado para a variável $c$ é zero, já que existe um 
+Sabe-se de antemão que o valor esperado para a variável $c$ é 1, já que existe um 
 integrador na planta em estudo. No Apêndice (\ref{appendix_mmq}) está o script utilizado 
 para chegar-se aos resultados obtidos para a estimativa do modelo utilizando o método dos
 mínimos quadrados.
+
+Foram efetuadas medidas sobre o sistema aplicando-se entradas com formas de ondas diferentes.
+Inicialmente foi utilizado um sistema controlado por um controlador do tipo PID onde aplicou-se
+uma referencia do tipo: Rampa, senoidal ou quadrada, e mediu-se a entrada da planta (u(t)) e 
+a saída da planta (y(t)). Nas figuras (\ref{fig:in_v1_rampa}),  (\ref{fig:in_v2_sin}),  
+(\ref{fig:in_v3_ramp}) e (\ref{fig:in_v4_quad}).
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/input_data1_v_ramp.eps}
+	\caption{Entrada aplicada sobre o sistema $G(q)$ quando submetido a uma referencia
+	do tipo rampa.}
+	\label{fig:in_v1_rampa}
+\end{figure}
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/input_data2_v_sin.eps}
+	\caption{Entrada aplicada sobre o sistema $G(q)$ quando submetido a uma referencia
+	do tipo senoidal.}
+	\label{fig:in_v2_sin}
+\end{figure}
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/input_data3_v_ramp.eps}
+	\caption{Entrada aplicada sobre o sistema $G(q)$ quando submetido a uma referencia
+	do tipo rampa.}
+	\label{fig:in_v3_rampa}
+\end{figure}
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/input_data4_v_quad.eps}
+	\caption{Entrada aplicada sobre o sistema $G(q)$ quando submetido a uma referencia
+	do tipo onda quadrada.i}
+	\label{fig:in_v4_quad}
+\end{figure}
 
 A figura (\ref{fig:mmq_arx}) apresenta os resultados obtidos na estimativa dos parâmetros
 a partir das medidas efetuadas sobre o sistema.
@@ -244,6 +282,36 @@ a partir das medidas efetuadas sobre o sistema.
 \end{figure}
 
 TODO: colocar os valores médios obtidos para os parâmetros.
+
+
+
+
+
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_d1_ramp_n150.eps}
+	\caption{Estimativas das variáveis a e b para o conjunto de dados 1.}
+	\label{fig:mmq_d1_ramp}
+\end{figure}
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_d2_sin_n150.eps}
+	\caption{Estimativas das variáveis a e b para o conjunto de dados 2.}
+	\label{fig:mmq_d2_sin}
+\end{figure}
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_d3_ramp_n150.eps}
+	\caption{Estimativas das variáveis a e b para o conjunto de dados 3.}
+	\label{fig:mmq_d3_ramp}
+\end{figure}
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_d4_quad_n150.eps}
+	\caption{Estimativas das variáveis a e b para o conjunto de dados 4.}
+	\label{fig:mmq_d4_quad}
+\end{figure}
 
 \subsubsection{Resultados para um modelo incompleto}
 %===============================================================================
