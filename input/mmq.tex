@@ -271,22 +271,12 @@ a saída da planta (y(t)). Nas figuras (\ref{fig:in_v1_rampa}),  (\ref{fig:in_v2_
 	\label{fig:in_v4_quad}
 \end{figure}
 
-A figura (\ref{fig:mmq_arx}) apresenta os resultados obtidos na estimativa dos parâmetros
-a partir das medidas efetuadas sobre o sistema.
+A figura (\ref{fig:mmq_d1_ramp}) apresenta os valores estimados para o sistema quando
+submetido a uma referencia do tipo rampa, assim como na figura (\ref{fig:mmq_d3_ramp}), 
+a diferenca entre ambos os sinais é a frequencia da onda de referência.
 
-\begin{figure}[htbp]
-	\center
-	\includegraphics[width=0.98\columnwidth]{figures/mmq_arx.eps}
-	\caption{TODO}
-	\label{fig:mmq_arx}
-\end{figure}
-
-TODO: colocar os valores médios obtidos para os parâmetros.
-
-
-
-
-
+Na figura (\ref{fig:mmq_d4_quad}) é apresentado os resultados para a estimativa do sistema
+quando a referência para o sistema é uma onda quadrada.
 
 \begin{figure}[htbp]
 	\center
@@ -294,24 +284,74 @@ TODO: colocar os valores médios obtidos para os parâmetros.
 	\caption{Estimativas das variáveis a e b para o conjunto de dados 1.}
 	\label{fig:mmq_d1_ramp}
 \end{figure}
-\begin{figure}[htbp]
-	\center
-	\includegraphics[width=0.98\columnwidth]{figures/mmq_d2_sin_n150.eps}
-	\caption{Estimativas das variáveis a e b para o conjunto de dados 2.}
-	\label{fig:mmq_d2_sin}
-\end{figure}
+
+
 \begin{figure}[htbp]
 	\center
 	\includegraphics[width=0.98\columnwidth]{figures/mmq_d3_ramp_n150.eps}
 	\caption{Estimativas das variáveis a e b para o conjunto de dados 3.}
 	\label{fig:mmq_d3_ramp}
 \end{figure}
+
 \begin{figure}[htbp]
 	\center
 	\includegraphics[width=0.98\columnwidth]{figures/mmq_d4_quad_n150.eps}
 	\caption{Estimativas das variáveis a e b para o conjunto de dados 4.}
 	\label{fig:mmq_d4_quad}
 \end{figure}
+
+Para o caso quando temos na entrada do sistema uma senoide puramente, não é possível
+estimar os parametros do modelo sem que haja erro de polarizacão. Isso é devido ao 
+fato de que a entrada do sistema não é suficientemente excitavel para o sistema.
+Obtem-se desta forma valore defasados dos que foram obtidos com as outras entradas
+aplicadas sobre o sistema.
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_d2_sin_n150.eps}
+	\caption{Estimativas das variáveis a e b para o conjunto de dados 2.}
+	\label{fig:mmq_d2_sin}
+\end{figure}
+
+Na tabela (\ref{tab:mmq_results}) é apresentado os valores encontrados para cada conjunto
+de dados. Apresenta-se também para questões de exemplificar, o resultado obtido quando
+altera-se o tamanho do conjunto de dados que é utilizado para estimar os parametros.
+
+\begin{table}[htbp]
+  \begin{center}
+	\caption{Valores estimados de $G(q)$ para o método dos minímos quadrados (ARX)}
+	\label{tab:mmq_results}
+	\begin{small}
+	  \begin{tabular}{lcll}
+		\hline
+		Conjunto	& N      & Media a & Media b  \\
+		\hline
+		1 - Rampa	& 150     &  0.0235 & 0.8478   \\
+		1 - Rampa	& 300     &  0.0234 & 0.848    \\
+		1 - Rampa	& 600     &  0.0234 & 0.8481   \\
+		1 - Rampa	& 1500    &  0.0234 & 0.8482   \\
+		\hline
+		2 - Sin 	& 150     &  0.0137 & 0.92     \\
+		2 - Sin 	& 300     &  0.0137 & 0.92     \\
+		2 - Sin 	& 600     &  0.0136 & 0.9201   \\
+		2 - Sin 	& 1500    &  0.0135 & 0.9209   \\
+		\hline
+		3 - Rampa	& 150     & 0.0185  & 0.8807   \\
+		3 - Rampa	& 300     & 0.0185  & 0.8807   \\
+		3 - Rampa	& 600     & 0.0185  & 0.8807   \\
+		3 - Rampa	& 1500    & 0.0185  & 0.8808   \\
+		\hline
+		4 - Quadrada & 150    & 0.0203  & 0.8624   \\
+		4 - Quadrada & 300    & 0.0203  & 0.8624   \\
+		4 - Quadrada & 600    & 0.0203  & 0.8624   \\
+		4 - Quadrada & 1500   & 0.0202  & 0.8629   \\
+		\hline
+	  \end{tabular}
+	\end{small}
+  \end{center}
+\end{table}
+
+
 
 \subsubsection{Resultados para um modelo incompleto}
 %===============================================================================
