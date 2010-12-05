@@ -1,16 +1,15 @@
 \BOOKMARK [1][-]{section.1}{Introdu\347\343o}{}
 \BOOKMARK [1][-]{section.2}{Modelagem do sistema}{}
 \BOOKMARK [2][-]{subsection.2.1}{Sistema F\355sico}{section.2}
-\BOOKMARK [1][-]{section.3}{Modelagem n\343o param\351trica}{}
-\BOOKMARK [1][-]{section.4}{Modelos param\351tricos simples}{}
-\BOOKMARK [1][-]{section.5}{M\351todo dos m\355nimos quadrados}{}
-\BOOKMARK [2][-]{subsection.5.1}{Sistema com solu\347\343o \372nica}{section.5}
-\BOOKMARK [2][-]{subsection.5.2}{Sistema sobredeterminado}{section.5}
-\BOOKMARK [2][-]{subsection.5.3}{Estruturas de modelagem}{section.5}
-\BOOKMARK [2][-]{subsection.5.4}{Controle de posi\347\343o angular do motor DC}{section.5}
-\BOOKMARK [3][-]{subsubsection.5.4.1}{Resultados para um modelo incompleto}{subsection.5.4}
-\BOOKMARK [1][-]{section.6}{M\351todo da vari\341vel instrumental - IV}{}
-\BOOKMARK [2][-]{subsection.6.1}{M\351todo aplicado ao controle de posi\347\343o}{section.6}
-\BOOKMARK [1][-]{section.7}{Conclus\365es}{}
+\BOOKMARK [1][-]{section.3}{Aquisi\347\343o dos dados para identifica\347\343o do sistema}{}
+\BOOKMARK [1][-]{section.4}{M\351todo dos m\355nimos quadrados}{}
+\BOOKMARK [2][-]{subsection.4.1}{Sistema com solu\347\343o \372nica}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{Sistema sobredeterminado}{section.4}
+\BOOKMARK [2][-]{subsection.4.3}{Estruturas de modelagem}{section.4}
+\BOOKMARK [2][-]{subsection.4.4}{Controle de posi\347\343o angular do motor DC}{section.4}
+\BOOKMARK [2][-]{subsection.4.5}{Resultados para um modelo incompleto - MQ ARX}{section.4}
+\BOOKMARK [1][-]{section.5}{M\351todo da vari\341vel instrumental - IV}{}
+\BOOKMARK [2][-]{subsection.5.1}{M\351todo aplicado ao controle de posi\347\343o}{section.5}
+\BOOKMARK [1][-]{section.6}{Conclus\365es}{}
 \BOOKMARK [1][-]{section*.1}{Ap\352ndice}{}
 \BOOKMARK [1][-]{section*.2}{Refer\352ncias}{}

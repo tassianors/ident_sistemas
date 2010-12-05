@@ -236,8 +236,8 @@ mínimos quadrados.
 Foram efetuadas medidas sobre o sistema aplicando-se entradas com formas de ondas diferentes.
 Inicialmente foi utilizado um sistema controlado por um controlador do tipo PID onde aplicou-se
 uma referencia do tipo: Rampa, senoidal ou quadrada, e mediu-se a entrada da planta (u(t)) e 
-a saída da planta (y(t)). Nas figuras (\ref{fig:in_v1_rampa}),  (\ref{fig:in_v2_sin}),  
-(\ref{fig:in_v3_ramp}) e (\ref{fig:in_v4_quad}).
+a saída da planta (y(t)). Nas Figuras (\ref{fig:in_v1_rampa}),  (\ref{fig:in_v2_sin}),  
+(\ref{fig:in_v3_rampa}) e (\ref{fig:in_v4_quad}) são apresentados estas formas de onda.
 
 \begin{figure}[htbp]
 	\center
@@ -271,11 +271,11 @@ a saída da planta (y(t)). Nas figuras (\ref{fig:in_v1_rampa}),  (\ref{fig:in_v2_
 	\label{fig:in_v4_quad}
 \end{figure}
 
-A figura (\ref{fig:mmq_d1_ramp}) apresenta os valores estimados para o sistema quando
-submetido a uma referencia do tipo rampa, assim como na figura (\ref{fig:mmq_d3_ramp}), 
-a diferenca entre ambos os sinais é a frequencia da onda de referência.
+A Figura (\ref{fig:mmq_d1_ramp}) apresenta os valores estimados para o sistema quando
+submetido a uma referencia do tipo rampa, assim como na Figura (\ref{fig:mmq_d3_ramp}), 
+a diferença entre ambos os sinais é a frequência da onda de referência.
 
-Na figura (\ref{fig:mmq_d4_quad}) é apresentado os resultados para a estimativa do sistema
+Na Figura (\ref{fig:mmq_d4_quad}) é apresentado os resultados para a estimativa do sistema
 quando a referência para o sistema é uma onda quadrada.
 
 \begin{figure}[htbp]
@@ -301,9 +301,9 @@ quando a referência para o sistema é uma onda quadrada.
 \end{figure}
 
 Para o caso quando temos na entrada do sistema uma senoide puramente, não é possível
-estimar os parametros do modelo sem que haja erro de polarizacão. Isso é devido ao 
-fato de que a entrada do sistema não é suficientemente excitavel para o sistema.
-Obtem-se desta forma valore defasados dos que foram obtidos com as outras entradas
+estimar os parâmetros do modelo sem que haja erro de polarização. Isso é devido ao 
+fato de que a entrada do sistema não é suficientemente excitável para o sistema.
+Obtém-se desta forma valore defasados dos que foram obtidos com as outras entradas
 aplicadas sobre o sistema.
 
 \begin{figure}[htbp]
@@ -313,13 +313,13 @@ aplicadas sobre o sistema.
 	\label{fig:mmq_d2_sin}
 \end{figure}
 
-Na tabela (\ref{tab:mmq_results}) é apresentado os valores encontrados para cada conjunto
+Na Tabela (\ref{tab:mmq_results}) é apresentado os valores encontrados para cada conjunto
 de dados. Apresenta-se também para questões de exemplificar, o resultado obtido quando
-altera-se o tamanho do conjunto de dados que é utilizado para estimar os parametros.
+altera-se o tamanho do conjunto de dados que é utilizado para estimar os parâmetros.
 
 \begin{table}[htbp]
   \begin{center}
-	\caption{Valores estimados de $G(q)$ para o método dos minímos quadrados (ARX)}
+	\caption{Valores estimados de $G(q)$ para o método dos mínimos quadrados (ARX)}
 	\label{tab:mmq_results}
 	\begin{small}
 	  \begin{tabular}{lcll}
@@ -351,9 +351,7 @@ altera-se o tamanho do conjunto de dados que é utilizado para estimar os paramet
   \end{center}
 \end{table}
 
-
-
-\subsubsection{Resultados para um modelo incompleto}
+\subsection{Resultados para um modelo incompleto - MQ ARX}
 %===============================================================================
 
 Nesta seção será apresentado resultados para uma estimativa utilizando um modelo que não consegue
@@ -387,8 +385,14 @@ Figura (\ref{fig:mmq_arx_inc}).
 
 \begin{figure}[htbp]
 	\center
-	\includegraphics[width=0.98\columnwidth]{figures/mmq_arx.eps}
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_d4_quad_n150_m_inc.eps}
 	\caption{TODO}
 	\label{fig:mmq_arx_inc}
 \end{figure}
+
+Observa-se que para este sistema, considerando-se um conjunto com $N=150$ obteve-se
+uma média para os valores dos parâmetros $a=0.0335$ e $b=1.0147$. Valores muito distantes dos
+obtidos utilizando o modelo descrito na seção anterior, e que os resultados para o conjunto 
+de dados 4 é apresentado na Tabela (\ref{tab:mmq_results}).
+
 
