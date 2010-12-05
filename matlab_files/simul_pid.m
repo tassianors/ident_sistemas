@@ -7,43 +7,38 @@
 close all; clear all;
 
 % LOAD DATA
-data_in_4
-data_out_4
+data9
 
 % Defines
 % Number or unknown variables to be determined by this method
-n=3;
-step_size=1700;
+n=4;
+step_size=150;
 N=0;
 j=1;
 
 % Total number of points colected
-Ntot=size(input, 1);
+Ntot=size(value, 1);
 
 while N+step_size <= Ntot
     % load partial number of points
-    y=output(N+1:N+step_size,1);
-    u=input(N+1:N+step_size,1);
+    y=value(N+1:N+step_size,1);
+    u=value(N+1:N+step_size,2);
 
     phy=zeros(step_size, n);
     z=zeros(step_size, n);
     for t=3:step_size
-        phy(t, 1)=u(t-2);
-        phy(t, 2)=y(t-1);
-        phy(t, 3)=y(t-2);
+        phy(t, 1)=u(t-1);
+        phy(t, 2)=u(t-2);
+        phy(t, 3)=y(t-1);
+        phy(t, 4)=y(t-2);
     end
-    for t=4:step_size
-        % auxiliary instrument z
-        z(t, 3)=u(t-1);
-        z(t, 2)=u(t-2);
-        z(t, 1)=u(t-3);
-    end
-
-    teta=inv(z'*phy)*z'*y;
+    
+    % make sure, rank(phy) = n :)
+    teta=inv(phy'*phy)*phy'*y;
     % to be used in grafic ploting
-    a(j)=teta(1);
-    b(j)=-teta(3);
-    c(j)=teta(2)-b(j);
+    a(j)=teta(1)/5;
+    b(j)=-teta(4);
+    c(j)=teta(3)-b(j);
     j=j+1;
     N=N+step_size;
 end
@@ -58,7 +53,7 @@ plot(a, b, 'bo');
 hold;
 plot(ma, mb, 'rx');
 hold;
-title('Estimativa usando o metodo das variaveis instrumentais. Ref onda quadrada, N=150')
+title('Estimativa usando o metodo dos min quadrados. Ref onda quadrada, N=150')
 xlabel('Valor da estimativa para a variavel a')
 ylabel('Valor da estimativa para a variavel b')
 legend('Estimativas', 'Media')

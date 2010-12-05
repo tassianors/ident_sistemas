@@ -395,4 +395,61 @@ uma média para os valores dos parâmetros $a=0.0335$ e $b=1.0147$. Valores muito 
 obtidos utilizando o modelo descrito na seção anterior, e que os resultados para o conjunto 
 de dados 4 é apresentado na Tabela (\ref{tab:mmq_results}).
 
+\subsection{Simulação para modelo considerando o PID}
+%===============================================================================
+
+Nesta seção será apresentado os resultados obtidos para o método dos mínimos quadrados
+quando se considera o sistema com o controlador do tipo PID (\ref{fig:sys_pid}).
+
+Neste caso, os dados coletados e utilizados para estimar os parâmetros $a$ e $b$ são
+os dados de referência (onda quadrada, rampa, e senoidal) e a saída do sistema $y(t)$.
+
+Utilizando-se o modelo do PID encontrado em (\ref{eq:pid_disc}), o modelo a ser utilizado
+no método dos minimos quadrados é:
+
+\begin{equation}
+G(q, \theta)=\frac{a(5q-2)}{(q-b)(q-c)} \;\;H(q, \theta)=\frac{q^2}{(q-b)(q-c)}
+\nonumber
+\end{equation}
+
+daonde o método dos mínimos quadrados fica:
+
+\begin{equation}
+\begin{matrix}
+\theta = \begin{bmatrix}
+5a & -2a & b+1 & -b
+\end{bmatrix}
+&
+\varphi (t)=\begin{bmatrix}
+r(t-1)\\ 
+r(t-2)\\ 
+y(t-1)\\ 
+y(t-2)
+\end{bmatrix}
+\end{matrix}
+\nonumber
+\end{equation}
+
+No apendice (\ref{appendix_mmq_pid}) é apresentado o script utilizado para efetuar o
+processo de estimativa dos parametros.
+
+Na figura (\ref{fig:in_pid_quad}) pode ser observado a entrada do sistema $r(t)$ e a saída 
+$y(t)$. Este conjunto de dados proporcionou o seguionte resultado para a estimativa 
+dos parametros do sistema (\ref{fig:mmq_pid_data9}).
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/input_data9_pid_quad.eps}
+	\caption{Entrada aplicada sobre o sistema e a respctiva saída, quando considerado o
+	controlador PID na planta.}
+	\label{fig:in_pid_quad}
+\end{figure}
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_d9_pid_quad_n150.eps}
+	\caption{Estimativa obtida para os parametros a e b considerando-se o controlador PID e aplicando-se
+		uma referencia do tipo onda quadrada.}
+	\label{fig:mmq_pid_data9}
+\end{figure}
 
