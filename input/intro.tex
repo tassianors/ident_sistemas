@@ -8,19 +8,21 @@ os valores das variáveis existentes no modelo escolhido para representar este si
 Inicialmente será explicado o processo de escolha do modelo que representa a dinâmica
 deste sistema (Seção (\ref{sec:modelling})). Será explicitado quais considerações sobre
 o sistema foram feitas para se obter o modelo que será utilizado nas seções seguintes, 
-para determinar os parâmetros.
+de estimativas dos parâmetros.
 
 Em seguida, será utilizado o método dos Mínimos quadrados (MQ), para estimar o sistema, 
 considerando-se para isso que o ruido sobre o sistema sofre influência dos mesmos polos
 que estão na planta, ou seja, que o modelo para o sistema se comporta como um modelo ARX.
-Nesta mesma seção (\ref{sec:mmq}) será apresentado os resultados para o mesmo sistema, 
+Nesta mesma seção (\ref{sec:mmq}) será apresentado os resultados para o sistema, 
 baseado nos mesmos dados, mas para um modelo que não representa o sistema físico, ou que 
 não consegue representa-lo.
 
 Na seção (\ref{sec:iv}) será apresentado o método das variáveis instrumentais, para estimar
-os valores do parâmetro para o modelo. Da mesma forma que para o método dos MQ, será
-utilizado um modelo que não representa o sistema real, e este método será aplicado para 
-determinar a qualidade dos resultados obtidos.
+os valores do parâmetro para o modelo. Serão utilizados dois tipos de dados para estimar os 
+valores dos parâmetros do modelo, primeiramente será utilizado dados provenientes da entrada
+da planta e de sua saída, e em um segundo momento serão utilizados os dados de referencia e de
+saída do sistema considerando-se o controlador do tipo PID que está presente no equipamento
+utilizado para a coleta dos dados.
 
 Ao fim, será apresentado uma breve discussão sobre os resultados obtidos em ambos os métodos
 utilizados, e as considerações finais.

@@ -3,12 +3,12 @@
 %===============================================================================
 
 O sistema apresentado na seção (\ref{sec:modelling}) é a descrição matemática para
-a planta do sistema, e a função de transferência utilizada, é a que descreve a
+a planta do sistema, e a função de transferência utilizada é a que descreve a
 posição angular do sistema com relação a tensão aplicada sobre os terminais do motor.
 
 Na prática o que o que foi utilizado é um sistema como o apresentado na Figura (\ref{fig:sys_pid})
 onde a planta que se quer identificar esta sendo controlada por um controlador do tipo PID
-(Proporcional, integral diferencial) \cite{Ogata}. Onde aplica-se uma referencia a o sistema 
+(Proporcional, integral diferencial) \cite{Ogata}. Onde aplica-se uma referencia e o sistema 
 deve seguir esta referencia.
 
 \begin{figure}[htbp]
@@ -27,11 +27,11 @@ parâmetros de $G(q)$, é possível apenas utilizar os sinais $r(t)$ e $y(t)$ e adi
 apresentado na seção (\ref{sec:modelling}) o modelo do controlador PID, já que este tem um modelo
 conhecido e seus parâmetros foram previamente escolhidos (antes da simulação).
 
+Outra maneira possível é utilizar apenas os sinais $u(t)$ e $y(t)$, desta forma pode-se ignorar a
+existência do controlador PID, e utilizar o método desejado, apenas com o modelo do processo (\ref{eq:motor_pos_tf_disc}).
+
 \subsection{Dados considerando-se o controlador PID}
 %===============================================================================
-
-Outra maneira possível é utilizar apenas os sinais $u(t)$ e $y(t)$, desta forma pode-se ignorar a
-existência do controlador PID, e utilizar o método desejado, apenas com o modelo do processo.
 
 Quando se considera o PID para a estimativa dos parâmetros, deve-se adicionar esta informação para
 efetuar as estimativas. O modelo do controlador PID pode ser descrito como em (\ref{eq:pid}). 
@@ -42,7 +42,7 @@ u(t)=k_p(r(t)-y(t))+k_i \int_{0}^{t}r(\tau)-y(\tau)d\tau + k_d(\frac{\mathrm{d} 
 \end{equation}
 
 Nas medidas efetuadas em laboratório foi utilizado os seguintes valores para o ajuste do controlador
-PID (\ref{tab:pid}).
+PID, Tabela (\ref{tab:pid}).
 
 \begin{table}[htbp]
   \begin{center}

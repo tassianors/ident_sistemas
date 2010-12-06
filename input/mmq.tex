@@ -79,7 +79,7 @@ Onde $\hat{y}(t, \theta)$ é a predição do sistema e pode ser representado como a
 \end{equation}
 
 Desta forma pode se dizer que o sistema real é o próprio sistema estimado mais algum 
-erro de estimativa:
+erro de estimativa $e(t)$:
 
 \begin{equation}
 y(t) = \hat{y}(t, \theta) +e(t)=\theta^T \phi(t) + e(t)
@@ -137,13 +137,14 @@ mais comumente utilizados.
 \end{table}
 
 O método dos mínimos quadrados utiliza intrinsecamente o modelo ARX para descrever 
-o modelo do sistema.
+o sistema.
 
 \subsection{Controle de posição angular do motor DC}
+\label{sec:mmq_dc}
 %===============================================================================
 
 O sistema descrito na seção (\ref{sec:modelling}) quando utilizamos o método dos 
-mínimos quadrados, intrinsecamente utilizamos o modelo ARX (\ref{eq:mmq_arx}) para 
+mínimos quadrados, intrinsecamente utilizamos o modelo ARX para 
 descrever este sistema. A partir de (\ref{eq:mmq_generic_model}) tem-se que o
 modelo ARX fica (\ref{eq:mmq_arx}).
 
@@ -230,7 +231,7 @@ y(t-2)
 
 Sabe-se de antemão que o valor esperado para a variável $c$ é 1, já que existe um 
 integrador na planta em estudo. No Apêndice (\ref{appendix_mmq}) está o script utilizado 
-para chegar-se aos resultados obtidos para a estimativa do modelo utilizando o método dos
+para obter os resultados para a estimativa do modelo utilizando o método dos
 mínimos quadrados.
 
 Foram efetuadas medidas sobre o sistema aplicando-se entradas com formas de ondas diferentes.
@@ -267,7 +268,7 @@ a saída da planta (y(t)). Nas Figuras (\ref{fig:in_v1_rampa}),  (\ref{fig:in_v2_
 	\center
 	\includegraphics[width=0.98\columnwidth]{figures/input_data4_v_quad.eps}
 	\caption{Entrada aplicada sobre o sistema $G(q)$ quando submetido a uma referencia
-	do tipo onda quadrada.i}
+	do tipo onda quadrada.}
 	\label{fig:in_v4_quad}
 \end{figure}
 
@@ -303,8 +304,8 @@ quando a referência para o sistema é uma onda quadrada.
 Para o caso quando temos na entrada do sistema uma senoide puramente, não é possível
 estimar os parâmetros do modelo sem que haja erro de polarização. Isso é devido ao 
 fato de que a entrada do sistema não é suficientemente excitável para o sistema.
-Obtém-se desta forma valore defasados dos que foram obtidos com as outras entradas
-aplicadas sobre o sistema.
+Obtém-se desta forma valores defasados dos que foram obtidos com as outras entradas
+aplicadas sobre o sistema. Isso é claramente observado na Figura (\ref{fig:mmq_d2_sin}).
 
 \begin{figure}[htbp]
 	\center
@@ -351,55 +352,11 @@ altera-se o tamanho do conjunto de dados que é utilizado para estimar os parâmet
   \end{center}
 \end{table}
 
-\subsection{Resultados para um modelo incompleto - MQ ARX}
-%===============================================================================
-
-Nesta seção será apresentado resultados para uma estimativa utilizando um modelo que não consegue
-descrever o sistema propriamente. Serão utilizados os mesmos dados da estimativa do item anterior.
-
-O modelo utilizado é descrito em (\ref{eq:mmq_motor_arx_inc}). Observa-se que o integrador não esta presente
-neste modelo, desta forma tem-se que o modelo das variáveis a serem utilizadas no método dos 
-mínimos quadrados fica como em (\ref{eq:mmq_arx_inc_var}).
-
-\begin{equation}
-G(q, \theta)=\frac{a}{(q-b)} \;\;H(q, \theta)=\frac{q}{(q-b)}
-\label{eq:mmq_motor_arx_inc}
-\end{equation}
-
-\begin{equation}
-\begin{matrix}
-\theta = \begin{bmatrix}
-a & b 
-\end{bmatrix}
-&
-\varphi (t)=\begin{bmatrix}
-r(t-1)\\ 
-y(t-1) 
-\end{bmatrix}
-\end{matrix}
-\label{eq:mmq_arx_inc_var}
-\end{equation}
-
-Para este modelo chegou-se aos valores dos parâmetros $a$ e $b$ apresentados na 
-Figura (\ref{fig:mmq_arx_inc}).
-
-\begin{figure}[htbp]
-	\center
-	\includegraphics[width=0.98\columnwidth]{figures/mmq_d4_quad_n150_m_inc.eps}
-	\caption{TODO}
-	\label{fig:mmq_arx_inc}
-\end{figure}
-
-Observa-se que para este sistema, considerando-se um conjunto com $N=150$ obteve-se
-uma média para os valores dos parâmetros $a=0.0335$ e $b=1.0147$. Valores muito distantes dos
-obtidos utilizando o modelo descrito na seção anterior, e que os resultados para o conjunto 
-de dados 4 é apresentado na Tabela (\ref{tab:mmq_results}).
-
 \subsection{Simulação para modelo considerando o PID}
 %===============================================================================
 
 Nesta seção será apresentado os resultados obtidos para o método dos mínimos quadrados
-quando se considera o sistema com o controlador do tipo PID (\ref{fig:sys_pid}).
+quando se considera o sistema com o controlador do tipo PID, Figura (\ref{fig:sys_pid}).
 
 Neste caso, os dados coletados e utilizados para estimar os parâmetros $a$ e $b$ são
 os dados de referência (onda quadrada, rampa, e senoidal) e a saída do sistema $y(t)$.
@@ -435,7 +392,7 @@ processo de estimativa dos parâmetros.
 
 Na figura (\ref{fig:in_pid_quad}) pode ser observado a entrada do sistema $r(t)$ e a saída 
 $y(t)$. Este conjunto de dados proporcionou o seguinte resultado para a estimativa 
-dos parâmetros do sistema (\ref{fig:mmq_pid_data9}).
+dos parâmetros do sistema, Figura (\ref{fig:mmq_pid_data9}).
 
 \begin{figure}[htbp]
 	\center
@@ -453,7 +410,7 @@ dos parâmetros do sistema (\ref{fig:mmq_pid_data9}).
 	\label{fig:mmq_pid_data9}
 \end{figure}
 
-Para a entrada do tipo rampa (\ref{fig:in_pid_ramp}) os resultados para as estimativas foram
+Para a entrada do tipo rampa, Figura (\ref{fig:in_pid_ramp}), os resultados para as estimativas foram
 apresentados na Figura (\ref{fig:mmq_pid_data7}).
 
 \begin{figure}[htbp]
@@ -471,3 +428,50 @@ apresentados na Figura (\ref{fig:mmq_pid_data7}).
 		uma referencia do tipo rampa sobre o sistema.}
 	\label{fig:mmq_pid_data7}
 \end{figure}
+
+\subsection{Resultados para um modelo incompleto - MQ ARX}
+%===============================================================================
+
+Nesta seção será apresentado resultados para uma estimativa utilizando um modelo que não consegue
+descrever o sistema propriamente. Serão utilizados os mesmos dados da estimativa da seção \ref{sec:mmq_dc}).
+
+O modelo utilizado é descrito em (\ref{eq:mmq_motor_arx_inc}). Observa-se que o integrador não esta presente
+neste modelo, desta forma tem-se que o modelo das variáveis a serem utilizadas no método dos 
+mínimos quadrados ficam como em (\ref{eq:mmq_arx_inc_var}).
+
+\begin{equation}
+G(q, \theta)=\frac{a}{(q-b)} \;\;H(q, \theta)=\frac{q}{(q-b)}
+\label{eq:mmq_motor_arx_inc}
+\end{equation}
+
+\begin{equation}
+\begin{matrix}
+\theta = \begin{bmatrix}
+a & b 
+\end{bmatrix}
+&
+\varphi (t)=\begin{bmatrix}
+r(t-1)\\ 
+y(t-1) 
+\end{bmatrix}
+\end{matrix}
+\label{eq:mmq_arx_inc_var}
+\end{equation}
+
+Para este modelo chegou-se aos valores dos parâmetros $a$ e $b$ apresentados na 
+Figura (\ref{fig:mmq_arx_inc}).
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_d4_quad_n150_m_inc.eps}
+	\caption{Resultado da estimativa dos parâmetros do sistema, quando utilizado um modelo que não 
+	consegue descrever o sistema por completo. Observa-se o erro de polarização do sistema, quando 
+	comparado aos resultados obtidos com um modelo completo.}
+	\label{fig:mmq_arx_inc}
+\end{figure}
+
+Observa-se que para este sistema, considerando-se um conjunto com $N=150$ obteve-se
+uma média para os valores dos parâmetros $a=0.0335$ e $b=1.0147$. Valores muito distantes dos
+obtidos utilizando o modelo descrito na seção anterior, e que os resultados para o conjunto 
+de dados 4 é apresentado na Tabela (\ref{tab:mmq_results}).
+

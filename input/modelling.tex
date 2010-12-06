@@ -6,7 +6,7 @@ O objetivo da modelagem de um sistema é encontrar um modelo (função com parâmetr
 livres) que consiga representar o sistema físico de forma completa. A partir do
 conhecimento do sistema físico, fazem-se considerações sobre o sistema, para simplifica-lo
 a fim de tornar o modelo matemático o mais simples possível, mas que ainda represente
-o sistema real, com a margem de preciosidade definida, pela quantidade e qualidade 
+o sistema real, com a margem de preciosidade definida pela quantidade e qualidade 
 das simplificações aplicadas para chegar-se ao modelo matemático do sistema.
 \cite{system_identification}
 
@@ -32,8 +32,8 @@ As variáveis consideradas para a modelagem são as apresentadas abaixo:
 
 \begin{itemize}
 	\item $\omega$ = Velocidade do motor.
-	\item \it{v} = Tensão aplicada na armadura.
-	\item \it{ia} = corrente de armadura.
+	\item \it{V} = Tensão aplicada na armadura.
+	\item \it{Ia} = corrente de armadura.
 	\item \it{L} = Indutância da armadura.
 	\item \it{e} = Forca contra eletromotriz = $K_{2} \omega$
 	\item \it{R} = Resistência do enrolamento da armadura.
@@ -46,12 +46,12 @@ Tem-se desta forma as duas equações que descrevem o sistema para a parte elétric
 (\ref{eq:motor_elet}) e mecânica (\ref{eq:motor_mec}).
 
 \begin{equation}
-V-R\cdot Ia - L\frac{\mathrm{d} Ia}{\mathrm{d} x}-e = 0
+V(t)-R\cdot Ia(t) - L\frac{\mathrm{d} Ia(t)}{\mathrm{d} t}-e(t) = 0
 \label{eq:motor_elet}
 \end{equation}
 
 \begin{equation}
-J \dot{\omega}= T-f\omega
+J \dot{\omega}(t)= T-f\omega(t)
 \label{eq:motor_mec}
 \end{equation}
 
@@ -87,7 +87,7 @@ Ia\\
 \subsection{Modelagem e considerações}
 %===============================================================================
 
-Com este sistema de equações de estado, é possível obter-se as fumões de transferências,
+Com este sistema de equações de estado (\ref{eq:motor_eq_estados}), é possível obter-se as funções de transferências,
 que descrevem o sistema, para uma entrada e uma saída. Na equação (\ref{eq:motor_pos_tf}) 
 apresenta-se a função de transferência do motor, que relaciona a posição com a tensão de entrada
 do motor.
@@ -97,7 +97,7 @@ G(s)=\frac{k_1/JL}{s(s+f/L)(s+R/L)+s\;k_1 k_2/JL}
 \label{eq:motor_pos_tf}
 \end{equation}
 
-Devido a dinâmica do sistema mecânico ser muito menor que a dinâmica do sistema elétrico, 
+Devido a dinâmica do sistema mecânico ser muito mais lenta que a dinâmica do sistema elétrico, 
 pode-se desconsiderar a influencia do polo elétrico do sistema, ficando a função de transferência
 como a seguir:
 
@@ -106,7 +106,7 @@ G(s)=\frac{\frac{k_1}{JL}}{s(s+\frac{fL+k_1 k_2}{JL})}
 \nonumber
 \end{equation}
 
-A equação anterior (\ref{eq:motor_pos_tf}) representa o comportamento da posição angular do motor
+A equação (\ref{eq:motor_pos_tf}) representa o comportamento da posição angular do motor
 baseado na entrada de tensão aplicada sobre seus terminais. Esta Função de transferência descreve este
 comportamento em tempo continuo, nosso sistema é digital e com isso precisamos de uma
 representação discreta para esta mesma função, para isso pode ser utilizados diversos métodos, como
@@ -141,6 +141,5 @@ Com $T_S$ sendo a frequência de amostragem utilizada.
 
 Desta forma chega-se a uma modelagem do sistema que relaciona a posição em função da tensão aplicada
 sobre o motor. Para tanto foi considerado que a dinâmica da parte mecânica do sistema é muito mais
-predominante que a dinâmica da parte elétrica, podendo esta ser desconsiderada para que o sistema 
-se torne um pouco mais simples.
+predominante que a dinâmica da parte elétrica, podendo esta ser desconsiderada
 

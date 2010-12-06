@@ -50,7 +50,9 @@ E[\hat{\theta}_{N}^{iv}-\theta_0]=0
 %===============================================================================
 
 Primeiro passo para aplicar o método das {\it{Variáveis instrumentais}} é escolher
-o instrumento que será utilizado.
+o instrumento que será utilizado, este instrumento pode ser praticamente qualquer coisa
+contanto que não seja correlacionado com o ruido, uma escolha comum é escolher a própria
+entrada do sistema defasada no tempo, como foi escolhido abaixo ($F(q)$).
 
 \begin{equation}
 \begin{matrix}
@@ -73,15 +75,15 @@ w(t-p)
 \label{eq:iv_motor_instr}
 \end{equation}
 
-No Apendice (\ref{appendix_iv}) encontra-se o script utilizado para as simulacões deste
+No Apêndice (\ref{appendix_iv}) encontra-se o script utilizado para as simulações deste
 método. Foram utilizados os sinais de entrada apresentados nas Figuras (\ref{fig:in_v1_rampa}),
 (\ref{fig:in_v2_sin}), (\ref{fig:in_v3_rampa}) e (\ref{fig:in_v4_quad}).
 
 \subsection{Resultados}
 %===============================================================================
 
-Os resultados obtidos com a utilizacão do método das variaveis instrumentais proposrcionou as
-estimativas para os parametros $a$ e $b$ que são apresentados na Tabela (\ref{tab:iv_results}).
+Os resultados obtidos com a utilizacão do método das variáveis instrumentais proporcionou as
+estimativas para os parâmetros $a$ e $b$ que são apresentados na Tabela (\ref{tab:iv_results}).
 
 \begin{table}[htbp]
   \begin{center}
