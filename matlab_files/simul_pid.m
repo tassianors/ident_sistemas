@@ -7,7 +7,7 @@
 close all; clear all;
 
 % LOAD DATA
-data9
+data7
 
 % Defines
 % Number or unknown variables to be determined by this method
@@ -53,7 +53,7 @@ plot(a, b, 'bo');
 hold;
 plot(ma, mb, 'rx');
 hold;
-title('Estimativa usando o metodo dos min quadrados. Ref onda quadrada, N=150')
+title('Estimativa usando o metodo dos min quadrados. Ref rampa, N=150')
 xlabel('Valor da estimativa para a variavel a')
 ylabel('Valor da estimativa para a variavel b')
 legend('Estimativas', 'Media')

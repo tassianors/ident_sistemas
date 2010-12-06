@@ -13,7 +13,7 @@ deve seguir esta referencia.
 
 \begin{figure}[htbp]
 	\center
-	\includegraphics[width=0.8\columnwidth]{figures/sys_pid.eps}
+	\includegraphics[width=0.9\columnwidth]{figures/sys_pid.eps}
 	\caption{Representação do sistema utilizado para a coleta dos dados a serem utilizados no 
 	processo de estimativa dos parâmetros da função $G(q)$.}
 	\label{fig:sys_pid}
@@ -26,6 +26,9 @@ Com estes dados é possível proceder de duas maneiras distintas para estimar os v
 parâmetros de $G(q)$, é possível apenas utilizar os sinais $r(t)$ e $y(t)$ e adicionar ao modelo
 apresentado na seção (\ref{sec:modelling}) o modelo do controlador PID, já que este tem um modelo
 conhecido e seus parâmetros foram previamente escolhidos (antes da simulação).
+
+\subsection{Dados considerando-se o controlador PID}
+%===============================================================================
 
 Outra maneira possível é utilizar apenas os sinais $u(t)$ e $y(t)$, desta forma pode-se ignorar a
 existência do controlador PID, e utilizar o método desejado, apenas com o modelo do processo.

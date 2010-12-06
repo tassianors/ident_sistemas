@@ -405,14 +405,14 @@ Neste caso, os dados coletados e utilizados para estimar os parâmetros $a$ e $b$
 os dados de referência (onda quadrada, rampa, e senoidal) e a saída do sistema $y(t)$.
 
 Utilizando-se o modelo do PID encontrado em (\ref{eq:pid_disc}), o modelo a ser utilizado
-no método dos minimos quadrados é:
+no método dos mínimos quadrados é:
 
 \begin{equation}
 G(q, \theta)=\frac{a(5q-2)}{(q-b)(q-c)} \;\;H(q, \theta)=\frac{q^2}{(q-b)(q-c)}
 \nonumber
 \end{equation}
 
-daonde o método dos mínimos quadrados fica:
+Da onde o método dos mínimos quadrados fica:
 
 \begin{equation}
 \begin{matrix}
@@ -430,17 +430,17 @@ y(t-2)
 \nonumber
 \end{equation}
 
-No apendice (\ref{appendix_mmq_pid}) é apresentado o script utilizado para efetuar o
-processo de estimativa dos parametros.
+No apêndice (\ref{appendix_mmq_pid}) é apresentado o script utilizado para efetuar o
+processo de estimativa dos parâmetros.
 
 Na figura (\ref{fig:in_pid_quad}) pode ser observado a entrada do sistema $r(t)$ e a saída 
-$y(t)$. Este conjunto de dados proporcionou o seguionte resultado para a estimativa 
-dos parametros do sistema (\ref{fig:mmq_pid_data9}).
+$y(t)$. Este conjunto de dados proporcionou o seguinte resultado para a estimativa 
+dos parâmetros do sistema (\ref{fig:mmq_pid_data9}).
 
 \begin{figure}[htbp]
 	\center
 	\includegraphics[width=0.98\columnwidth]{figures/input_data9_pid_quad.eps}
-	\caption{Entrada aplicada sobre o sistema e a respctiva saída, quando considerado o
+	\caption{Entrada aplicada sobre o sistema e a respetiva saída, quando considerado o
 	controlador PID na planta.}
 	\label{fig:in_pid_quad}
 \end{figure}
@@ -448,8 +448,26 @@ dos parametros do sistema (\ref{fig:mmq_pid_data9}).
 \begin{figure}[htbp]
 	\center
 	\includegraphics[width=0.98\columnwidth]{figures/mmq_d9_pid_quad_n150.eps}
-	\caption{Estimativa obtida para os parametros a e b considerando-se o controlador PID e aplicando-se
+	\caption{Estimativa obtida para os parâmetros a e b considerando-se o controlador PID e aplicando-se
 		uma referencia do tipo onda quadrada.}
 	\label{fig:mmq_pid_data9}
 \end{figure}
 
+Para a entrada do tipo rampa (\ref{fig:in_pid_ramp}) os resultados para as estimativas foram
+apresentados na Figura (\ref{fig:mmq_pid_data7}).
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/input_data7_pid_rampa.eps}
+	\caption{Entrada aplicada sobre o sistema e a respetiva saída, quando considerado o
+	controlador PID na planta.}
+	\label{fig:in_pid_ramp}
+\end{figure}
+
+\begin{figure}[htbp]
+	\center
+	\includegraphics[width=0.98\columnwidth]{figures/mmq_d7_pid_rampa_n150.eps}
+	\caption{Estimativa obtida para os parâmetros a e b considerando-se o controlador PID e aplicando-se
+		uma referencia do tipo rampa sobre o sistema.}
+	\label{fig:mmq_pid_data7}
+\end{figure}

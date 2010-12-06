@@ -77,12 +77,48 @@ No Apendice (\ref{appendix_iv}) encontra-se o script utilizado para as simulacõe
 método. Foram utilizados os sinais de entrada apresentados nas Figuras (\ref{fig:in_v1_rampa}),
 (\ref{fig:in_v2_sin}), (\ref{fig:in_v3_rampa}) e (\ref{fig:in_v4_quad}).
 
-Os resultados obtidos foram os mesmos obtidos com o método dos minimos quadrados
-da secão (\ref{sec:mmq}). Os valores estimados para cada um dos 4 conjunto de dados utilizados
-encontram-se na Tabela (\ref{tab:mmq_results}).
+\subsection{Resultados}
+%===============================================================================
+
+Os resultados obtidos com a utilizacão do método das variaveis instrumentais proposrcionou as
+estimativas para os parametros $a$ e $b$ que são apresentados na Tabela (\ref{tab:iv_results}).
+
+\begin{table}[htbp]
+  \begin{center}
+	\caption{Valores estimados de $G(q)$ para o método das variáveis instrumentais}
+	\label{tab:iv_results}
+	\begin{small}
+	  \begin{tabular}{lcll}
+		\hline
+		Conjunto	& N      & Media a & Media b  \\
+		\hline
+		1 - Rampa	& 150     &  0.0179 & 0.8771   \\
+		1 - Rampa	& 300     &  0.0179 & 0.877    \\
+		1 - Rampa	& 600     &  0.018 & 0.8768   \\
+		1 - Rampa	& 1500    &  0.018 & 0.8769   \\
+		\hline
+		2 - Sin 	& 150     & -0.0126 & 1.0739   \\
+		2 - Sin 	& 300     & -0.0136 & 1.0796   \\
+		2 - Sin 	& 600     & -0.0135 & 1.0789   \\
+		2 - Sin 	& 1500    & -0.0137 & 1.0804   \\
+		\hline
+		3 - Rampa	& 150     & 0.0151  & 0.8962   \\
+		3 - Rampa	& 300     & 0.015  & 0.8964   \\
+		3 - Rampa	& 600     & 0.0151  & 0.8961   \\
+		3 - Rampa	& 1500    & 0.015  & 0.8966   \\
+		\hline
+		4 - Quadrada & 150    & 0.0113  & 0.8621   \\
+		4 - Quadrada & 300    & 0.0114  & 0.8575   \\
+		4 - Quadrada & 600    & 0.0114  & 0.8553   \\
+		4 - Quadrada & 1500   & 0.0114  & 0.8538   \\
+		\hline
+	  \end{tabular}
+	\end{small}
+  \end{center}
+\end{table}
 
 A Figura (\ref{fig:iv_d4_quad}) apresenta os valores da estimativa para uma referencia do
-tipo onda quadrada (Figura (\ref{fig:in_v4_quad})) utilizando o método das variaveis 
+tipo onda quadrada (Figura (\ref{fig:in_v4_quad})) utilizando o método das variáveis 
 instrumentais e um conjunto de dados $N=150$.
 
 \begin{figure}[htbp]
