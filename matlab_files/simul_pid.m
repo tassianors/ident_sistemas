@@ -16,7 +16,7 @@ step_size=150;
 N=0;
 j=1;
 
-% Total number of points colected
+% Total number of points collected
 Ntot=size(value, 1);
 
 while N+step_size <= Ntot
@@ -33,9 +33,9 @@ while N+step_size <= Ntot
         phy(t, 4)=y(t-2);
     end
     
-    % make sure, rank(phy) = n :)
+    % make sure, rank(phy) = n
     teta=inv(phy'*phy)*phy'*y;
-    % to be used in grafic ploting
+    % to be used in graphic plotting
     a(j)=teta(1)/5;
     b(j)=-teta(4);
     c(j)=teta(3)-b(j);

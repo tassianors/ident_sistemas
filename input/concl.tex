@@ -3,4 +3,39 @@
 \label{sec:concl}
 %===============================================================================
 
+Neste trabalho foram apresentados dois métodos para identificação de sistemas lineares,
+ambos os métodos se encontram na categoria de métodos paramétricos de identificação, que 
+de forma simplificada, tentam estimar os parâmetros de uma função de transferência que
+represente o sistema físico em questão. Os métodos utilizados foram o dos mínimos quadrados
+e das variáveis instrumentais.
 
+O sistema físico utilizado foi o controle de posição de um motor DC, e os dados coletados
+para a identificação foram gerados a partir da aplicação de sinais de referência tais como
+rampas, senoides e ondas quadradas. Para cada um destes conjuntos foi obtido uma estimativa
+dos parâmetros do modelo utilizado.
+
+Para efetuar a estimativa do sistema físico em questão, foi necessário determinar um modelo,
+este foi determinado baseado no conhecimento das características do sistema e algumas simplificações 
+foram efetuadas, a fim de tornar o modelo matemático o mais simples possível, mas que ainda 
+consiga descrever o sistema dentro de uma margem aceitável de precisão.
+
+O método dos mínimos quadrados (\ref{sec:mmq}) obteve resultados para a estimativa dos parâmetros
+que podem ser encontrados na Tabela (\ref{tab:mmq_results}). Houveram pequenas divergências nos 
+parâmetros entre um conjunto de dados e outro, o que não é desejável, isso pode ser devido a
+imprecisões do modelo utilizado, (pode ser devido as simplificações do modelo, ou de dinâmicas não
+levadas em consideração).
+
+O método das variáveis instrumentais (\ref{sec:iv}) obteve resultados semelhantes ao método 
+dos mínimos quadrados, mas com valores mais próximos nos diferentes grupos de medidas. Os 
+resultados para este método foram apresentados na Tabela (\ref{tab:iv_results}).
+
+De forma geral este trabalho abordou e demonstrou como é o procedimento e no que se baseiam 
+dois métodos de identificação de sistemas lineares sujeitos a incertezas, perturbações e 
+ruídos. Não é o objetivo deste trabalho detalhar esmiuçar a matemática destes métodos e
+sim apresentar um exemplo prático, e demonstrar sua utilidade.
+
+A aplicabilidade deste tópico de engenharia é de uma aplicabilidade imensa, sendo muito importante 
+nas mais diversas áreas a correta identificação de sistemas para que, a partir do conhecimento 
+matemático de sua dinâmica, possa se agir sobre este sistema, a fim de obter os resultados desejados
+de forma eficiente e com propriedade sobre as ações tomadas, uma vez que o sistema identificado
+é identificado e sabe-se o quão boa esta aproximação do sistema real pode ser.

@@ -17,7 +17,7 @@ step_size=1700;
 N=0;
 j=1;
 
-% Total number of points colected
+% Total number of points collected
 Ntot=size(input, 1);
 
 while N+step_size <= Ntot
@@ -40,7 +40,7 @@ while N+step_size <= Ntot
     end
 
     teta=inv(z'*phy)*z'*y;
-    % to be used in grafic ploting
+    % to be used in graphic plotting
     a(j)=teta(1);
     b(j)=-teta(3);
     c(j)=teta(2)-b(j);

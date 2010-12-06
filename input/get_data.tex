@@ -37,7 +37,7 @@ Quando se considera o PID para a estimativa dos parâmetros, deve-se adicionar es
 efetuar as estimativas. O modelo do controlador PID pode ser descrito como em (\ref{eq:pid}). 
 
 \begin{equation}
-u(t)=k_p(r(t)-y(t))+k_i \int_{0}^{t}r(\tau)-y(\tau)d\tau + k_d(\frac{\mathrm{d} r(t)}{\mathrm{d} x}-\frac{\mathrm{d} y(t)}{\mathrm{d} x})
+u(t)=k_p(r(t)-y(t))+k_i \int_{0}^{t}r(\tau)-y(\tau)d\tau + k_d(\frac{\mathrm{d} r(t)}{\mathrm{d} t}-\frac{\mathrm{d} y(t)}{\mathrm{d} t})
 \label{eq:pid}
 \end{equation}
 
@@ -67,7 +67,7 @@ Aplicando-se os valores da Tabela (\ref{tab:pid}) sobre a equação (\ref{eq:pid})
 o controlador PID utilizado:
 
 \begin{equation}
-u(t)=3(r(t)-y(t))+0.05(\frac{\mathrm{d} r(t)}{\mathrm{d} x}-\frac{\mathrm{d} y(t)}{\mathrm{d} x})
+u(t)=3(r(t)-y(t))+0.05(\frac{\mathrm{d} r(t)}{\mathrm{d} t}-\frac{\mathrm{d} y(t)}{\mathrm{d} t})
 \nonumber
 \end{equation}
 
